@@ -29,7 +29,7 @@ export const HomeBenefits = () => {
         </p>
       </div>
         {/*Benefits Cards Section*/}
-      <div className='bg-black mx-5 lg:mx-28 lg:flex lg:justify-center md:gap-x-8 lg:gap-x-8'>
+      <div className='mx-5 lg:mx-28 lg:flex lg:justify-center md:gap-x-8 lg:gap-x-8'>
         {data}
       </div>
     </div>
