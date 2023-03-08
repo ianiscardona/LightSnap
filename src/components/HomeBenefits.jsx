@@ -16,7 +16,7 @@ export const HomeBenefits = () => {
 
   return (
     <div className='relative bg-[#232325] pb-[52px] lg:pb-[184px] md:pb-[184px]'>
-        {/*Benefits Upper Section md:h-screen lg:h-screen*/}
+        {/*Benefits Upper Section*/}
       <div className='w-full text-center text-[#FAF9F6] pt-[60px] lg:pt-[136px] mb-[63px] lg:mb-[83px]'>
         <p className='font-["Inter"] font-medium text-base leading-[19.2px] mb-[43px] lg:mb-[26px] px-20'>
           Planning to hire a photobooth service? We got you!
