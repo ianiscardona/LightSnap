@@ -3,6 +3,7 @@ import { HomeAbout } from "./components/HomeAbout";
 import { HomeBenefits } from "./components/HomeBenefits";
 import { HomeContact } from "./components/HomeContact";
 import { HomeHero } from "./components/HomeHero";
+import { Walkthrough } from "./components/lightsnap_app/Walkthrough";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <HomeAbout />
       <HomeBenefits />
       <HomeContact />
+      <Walkthrough />
     </div>
   );
 }
