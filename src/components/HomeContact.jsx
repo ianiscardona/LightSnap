@@ -103,6 +103,7 @@ export const HomeContact = () => {
             <br />
             <label className="text-xs lg:text-base">Your message for us:</label>
             <br />
+<<<<<<< HEAD
             <textarea
               placeholder="Type your message here..."
               className="message w-full mb-8 lg:mb-16 h-28 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6 pt-1 lg:pt-3"
@@ -114,6 +115,12 @@ export const HomeContact = () => {
                 value="Send My Message"
                 className="text-sm lg:text-lg bg-[#D7282F] px-4 lg:px-8 py-1 lg:py-3 rounded-[40px] hover:cursor-pointer text-white hover:bg-white hover:text-[#D7282F]"
               />
+=======
+            <textarea placeholder="Type your message here..." className='message w-full mb-8 lg:mb-16 h-28 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6 pt-1 lg:pt-3' required>
+            </textarea>
+            <div className='text-center'>
+              <input type="submit" value="Send My Message" className='text-sm lg:text-lg bg-[#D7282F] px-4 lg:px-8 py-1 lg:py-3 rounded-[40px] hover:cursor-pointer text-white hover:bg-white hover:text-[#D7282F] duration-300' />
+>>>>>>> 8eedb75a52b3fbe9761644d9cc256103a00140b4
             </div>
           </form>
         </div>
