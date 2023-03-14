@@ -17,7 +17,7 @@ export const EventCode = () => {
             </div>
         </div>
 
-        <div className='flex flex-col justify-center items-center w-full px-[4rem]
+        <div className='flex flex-col justify-center items-center w-full px-[4rem] font-[Inter]
                         -translate-y-[20rem] py-[.rem] space-y-3
                         sm:-translate-y-[35rem] sm:py-8 sm:space-y-5
                         md:-translate-y-[50rem]
