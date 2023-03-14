@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { WalkthroughInfo } from './WalkthroughInfo'
-import { WalkthroughInfoData } from './WalkthroughInfoData'
+import { WalkthroughInfoData } from '../data/walkthrough_info_data'
 
 export const WalkthroughCard = () => {
   const InfoArray = WalkthroughInfoData.map((item,index) => {

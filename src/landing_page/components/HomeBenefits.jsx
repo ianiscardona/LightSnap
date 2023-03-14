@@ -1,6 +1,6 @@
 import React from "react";
 import { HomeBenefitsCard } from "./HomeBenefitsCard";
-import { HomeBenefitsData } from "../data/HomeBenefitsData";
+import { HomeBenefitsData } from "../data/home_benefits_data";
 
 export const HomeBenefits = () => {
 
