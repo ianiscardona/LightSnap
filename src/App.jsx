@@ -1,11 +1,15 @@
 import React from "react";
 import { Home } from "./pages/home";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="relative">
+    <>
       <Home />
-    </div>
+      <Routes>
+        <Route path="/home" element={<Home />}></Route>
+      </Routes>
+    </>
   );
 }
 
