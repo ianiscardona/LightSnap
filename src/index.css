@@ -12,6 +12,48 @@
   resize: none;
 }
 
+@media all and (max-width: 414px){
+  .custom {
+    scale: 85%;
+  }
+  .walkthroughCustom{
+    scale: 70%;
+  }
+}
 
+@media all and (width: 320px) and (height: 568px){
+  .custom {
+    scale: 80%;
+  }
+  .walkthroughCustom{
+    scale: 80%;
+  }
+}
 
+@media all and (width: 280px){
+  .custom {
+    scale: 80%;
+  }
+  .walkthroughCustom{
+    scale: 80%;
+  }
+}
+
+@media all and (width: 375px) and (height: 812px){
+  .custom {
+    scale: 100%;
+  }
+  .walkthroughCustom{
+    scale: 80%;
+  }
+}
+
+@media all and (width: 540px) and (height: 720px){
+  .custom {
+    scale: 90%;
+  }
+  .walkthroughCustom{
+    scale: 90%;
+  }
+}
 
