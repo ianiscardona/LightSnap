@@ -1,16 +1,22 @@
 import React from "react";
 
-export const Frames = ({ isActive, onClick }) => {
+export const Frames = (props) => {
   const toggleClassCheck = (isActive) =>
     isActive ? "border-8 border-[#DBFF00]" : null;
   return (
     <div>
       <button
-        onClick={onClick}
+        onClick={props.onClick}
         className={`w-[77px] h-[77px] relative overflow-hidden snap-start border-2 ${toggleClassCheck(
-          isActive
+          props.isActive
         )} transition-all duration-300`}
-      ></button>
+      >
+        <img
+          className="overflow-hidden object-cover"
+          src={`../public/icons/frameicon/${props.icon}`}
+          alt=""
+        />
+      </button>
     </div>
   );
 };
