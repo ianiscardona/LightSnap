@@ -17,7 +17,6 @@ export const WalkthroughCard = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const previous = () => setCurrentIndex((currentIndex) => (currentIndex === 0 ? 0 : currentIndex-1))
   const next = () => setCurrentIndex((currentIndex) => (currentIndex === InfoArray.length-1 ? InfoArray.length-1  : currentIndex+1))
-  console.log(currentIndex);
   return (
     <div className='flex items-center justify-center h-screen bg-[#F1F1F1] sm:bg-white'>
       <div className='flex items-center justify-center bg-white rounded-xl mx-12 sm:mx-20 customWalkthrough xl:scale-[80%]'>
