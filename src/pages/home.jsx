@@ -6,11 +6,11 @@ import { HomeHero } from "../landing_page/components/HomeHero";
 
 export const Home = () => {
   return (
-    <div className="relative">
-      <HomeHero />
-      <HomeAbout />
-      <HomeBenefits />
-      <HomeContact />
-    </div>
+      <div className="relative">
+          <HomeHero />
+          <HomeAbout />
+          <HomeBenefits />
+          <HomeContact />
+      </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 export const HomeHero = () => {
   return (
@@ -32,9 +33,11 @@ export const HomeHero = () => {
           <button className="flex items-center justify-center rounded-full w-64 h-16 bg-white text-black hover:bg-black hover:text-white focus:bg-black focus:text-white transition-colors duration-300">
             <h2 className="font-medium text-xl">Inquire Now</h2>
           </button>
-          <button className="flex items-center justify-center rounded-full w-64 h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
-            <h2 className="font-medium text-xl">Go to Event!</h2>
-          </button>
+          <Link to='/eventcode'>
+            <button className="flex items-center justify-center rounded-full w-64 h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+              <h2 className="font-medium text-xl">Go to Event!</h2>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
