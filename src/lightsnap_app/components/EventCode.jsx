@@ -33,7 +33,7 @@ export const EventCode = () => {
                     </Link>
                 </form>
                 
-                <button className=' underline text-[#1C0EB7] font-medium text-sm sm:text-xl '>Contact Us</button>
+                <Link to="/contact"><button className=' underline text-[#1C0EB7] font-medium text-sm sm:text-xl '>Contact Us</button></Link>
         </div>
         
     </div>
