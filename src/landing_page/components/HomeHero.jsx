@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import { Navbar } from "../../pages/navbar";
 
 export const HomeHero = () => {
   return (
@@ -7,7 +8,8 @@ export const HomeHero = () => {
       <div className="relative w-full h-screen">
         <div className="absolute w-full h-full bg-hero bg-cover bg-top bg-no-repeat"></div>
         <div className="bg-black opacity-60 w-full h-full absolute"></div>
-        <div className="relative mx-14 flex flex-col items-center justify-between min-h-[70vh]">
+        <div className="relative flex flex-col items-center justify-between min-h-[70vh]">
+          <Navbar />
           <div className="flex flex-row items-center space-x-1 mt-14 md:my-14">
             <img
               src="/public/icons/ls-lens-red.svg"
@@ -30,9 +32,11 @@ export const HomeHero = () => {
           </div>
         </div>
         <div className="relative mx-14 mb-14 flex flex-col space-y-5 items-center justify-center content-end md:flex-row md:space-y-0 md:space-x-10 2xl:pb-14">
-          <button className="flex items-center justify-center rounded-full w-64 h-16 bg-white text-black hover:bg-black hover:text-white focus:bg-black focus:text-white transition-colors duration-300">
-            <h2 className="font-medium text-xl">Inquire Now</h2>
-          </button>
+          <a href='#inquire'>
+            <button className="flex items-center justify-center rounded-full w-64 h-16 bg-white text-black hover:bg-black hover:text-white focus:bg-black focus:text-white transition-colors duration-300">
+              <h2 className="font-medium text-xl">Inquire Now</h2>
+            </button>
+          </a>
           <Link to='/eventcode'>
             <button className="flex items-center justify-center rounded-full w-64 h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
               <h2 className="font-medium text-xl">Go to Event!</h2>

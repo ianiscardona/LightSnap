@@ -2,7 +2,7 @@ import React from "react";
 
 export const HomeContact = () => {
   return (
-    <div className="relative lg:pb-40 bg-[#232325]">
+    <div id="inquire" className="relative lg:pb-40 bg-[#232325]">
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 lg:mx-28 pt-20 lg:pt-40">
         {/* Contact Info Section */}
         <div className='relative overflow-hidden font-["Inter"] text-[#FAF9F6] bg-[#1C0EB7] lg:rounded-[30px] order-last lg:order-first pb-11 pl-9 lg:pl-10'>
@@ -82,7 +82,7 @@ export const HomeContact = () => {
             <br />
             Get in touch with us!
           </h1>
-          <form>
+          <form action='api.php' method='post'>
             <label className="text-xs lg:text-base">Your Name</label>
             <br />
             <input
