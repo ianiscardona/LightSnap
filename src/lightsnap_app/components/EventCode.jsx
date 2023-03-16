@@ -5,7 +5,7 @@ export const EventCode = () => {
   return (
     <div className='flex flex-col relative items-center w-full h-screen overflow-hidden mx-auto'>
         <div className='relative'>
-            <div className=' flex justify-center items-end bg-[#1C0EB7] rounded-b-full
+            <div className='customGetStarted flex justify-center items-end bg-[#1C0EB7] rounded-b-full
                             -translate-y-[20rem] h-[700px] w-[700px]
                             sm:-translate-y-[35rem] sm:h-[942px] sm:w-[942px]  
                             md:-translate-y-[48rem] md:h-[1250px] md:w-[2500px]
@@ -18,7 +18,7 @@ export const EventCode = () => {
             </div>
         </div>
 
-        <div className='flex flex-col justify-center items-center w-full px-[4rem] font-[Inter]
+        <div className='flex flex-col customGetStarted justify-center items-center w-full px-[4rem] font-[Inter]
                         -translate-y-[20rem] py-[.rem] space-y-3
                         sm:-translate-y-[35rem] sm:py-8 sm:space-y-5
                         md:-translate-y-[50rem]

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import image from "/images/benefits/entertainment.jpg";
-import { MdFlipCameraAndroid } from "react-icons/md";
+import { MdFlipCameraAndroid } from "react-icons/md" ;
 import { FramesData } from "../data/frames_data";
 import { Frames } from "./Frames";
 

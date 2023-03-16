@@ -5,6 +5,8 @@ import { EventCode } from "./lightsnap_app/components/EventCode";
 import { GetStartedCard } from "./lightsnap_app/components/GetStartedCard";
 import { WalkthroughCard } from "./lightsnap_app/components/WalkthroughCard";
 import { AppDashboard } from "./lightsnap_app/components/AppDashboard";
+import { AcceptRejectModal } from "./lightsnap_app/components/AcceptRejectModal";
+import { ShareModal } from "./lightsnap_app/components/ShareModal";
 function App() {
   return (
     <>
@@ -14,6 +16,8 @@ function App() {
         <Route path="/getstarted" element={<GetStartedCard />} />
         <Route path="/walkthrough" element={<WalkthroughCard />} />
         <Route path="/photobooth" element={<AppDashboard />} />
+        <Route path="/acceptrejectmodal" element={<AcceptRejectModal/>} />
+        <Route path="/sharemodal" element={<ShareModal/>} />
       </Routes>
     </>
   );
