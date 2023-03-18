@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom"
-import { Navbar } from "../../pages/navbar";
 
 export const HomeHero = () => {
   return (
@@ -8,9 +7,8 @@ export const HomeHero = () => {
       <div className="relative w-full h-screen">
         <div className="absolute w-full h-full bg-hero bg-cover bg-top bg-no-repeat"></div>
         <div className="bg-black opacity-60 w-full h-full absolute"></div>
-        <div className="relative flex flex-col items-center justify-between min-h-[70vh]">
-          <Navbar />
-          <div className="flex flex-row items-center space-x-1 mt-14 md:my-14">
+        <div className="relative mx-14 flex flex-col items-center justify-between min-h-[70vh]">
+          <div className="flex flex-row items-center space-x-1 mt-24 md:mt-24 md:mb-7">
             <img
               src="/public/icons/ls-lens-red.svg"
               className="h-16 md:h-20"
