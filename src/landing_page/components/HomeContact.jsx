@@ -82,13 +82,13 @@ export const HomeContact = () => {
             <br />
             Get in touch with us!
           </h1>
-          <form action='api.php' method='post'>
+          <form>
             <label className="text-xs lg:text-base">Your Name</label>
             <br />
             <input
               type="text"
               placeholder="Name"
-              className="w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
+              className="outline-none w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
               required
             />
             <br />
@@ -97,7 +97,7 @@ export const HomeContact = () => {
             <input
               type="email"
               placeholder="Email @domain.com"
-              className="w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
+              className="outline-none w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
               required
             />
             <br />
@@ -105,7 +105,7 @@ export const HomeContact = () => {
             <br />
             <textarea
               placeholder="Type your message here..."
-              className="message w-full mb-8 lg:mb-16 h-28 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6 pt-1 lg:pt-3"
+              className="outline-none message w-full mb-8 lg:mb-16 h-28 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6 pt-1 lg:pt-3"
               required
             ></textarea>
             <div className="text-center">

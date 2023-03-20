@@ -6,6 +6,7 @@ import { GetStartedCard } from "./lightsnap_app/components/GetStartedCard";
 import { WalkthroughCard } from "./lightsnap_app/components/WalkthroughCard";
 import { AppDashboard } from "./lightsnap_app/components/AppDashboard";
 import { EventGallery } from "./lightsnap_app/components/EventGallery";
+
 function App() {
   return (
     <>
