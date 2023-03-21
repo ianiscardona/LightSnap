@@ -63,9 +63,6 @@ export const EventGallery = () => {
                 Enter Event Code to See Pictures
               </p>
             </div>
-            {/* <p className={`absolute bottom-0 w-full text-center font-medium text-base lg:text-2xl mb-12 customInstruction ${submit ? "hidden":"block"}`}>
-              Enter Event Code to See Pictures
-            </p> */}
       </div>
     </div>
   )
