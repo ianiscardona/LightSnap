@@ -2,12 +2,11 @@ import React from "react";
 
 const ProcessImages = ({ images }) => {
   return (
-    <canvas className="object-cover">
-      <div></div>
-      {/* {images.map((image, index) => (
+    <div className="object-cover">
+      {images.map((image, index) => (
         <img key={index} src={image} alt={`Image ${index}`} />
-      ))} */}
-    </canvas>
+      ))}
+    </div>
   );
 };
 

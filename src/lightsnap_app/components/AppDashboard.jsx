@@ -39,11 +39,11 @@ export const AppDashboard = () => {
       setCapturedImages([...capturedImages, imageSrc]);
     }
   };
-  const startCapture = () => {
-    setInterval(() => {
-      capture();
-    }, 5000);
-  };
+  // const startCapture = () => {
+  //   setInterval(() => {
+  //     capture();
+  //   }, 5000);
+  // };
 
   const framesInfo = FramesData.map((item, index) => {
     return (
@@ -122,7 +122,7 @@ export const AppDashboard = () => {
               <MdFlipCameraAndroid className="w-11 h-11" />
             </button>
             <button
-              onClick={startCapture}
+              onClick={capture}
               className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all duration-500"
             >
               <svg viewBox="0 0 24 24" className="w-[105px] h-[105px] m-auto">
