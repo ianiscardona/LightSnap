@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +24,12 @@
   }
   .customWalkthrough {
     scale:85%;
+  }
+  .customEvent {
+    font-size: 36px;
+  }
+  .customInstruction{
+    font-size: 16px;
   }
 }
 

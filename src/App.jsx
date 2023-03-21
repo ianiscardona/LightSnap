@@ -6,13 +6,14 @@ import { EventCodeError } from "./lightsnap_app/components/EventCodeError";
 import { GetStartedCard } from "./lightsnap_app/components/GetStartedCard";
 import { WalkthroughCard } from "./lightsnap_app/components/WalkthroughCard";
 import { AppDashboard } from "./lightsnap_app/components/AppDashboard";
-import { HomeContact } from "./landing_page/components/HomeContact";
+import { EventGallery } from "./lightsnap_app/components/EventGallery";
+
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route  path="/contact" element={<HomeContact/>} />
+        <Route path="/eventgallery" element={<EventGallery />} />
         <Route path="/eventcode" element={<EventCode />} />
         <Route path="/eventcodeerror" element={<EventCodeError/>} />
         <Route path="/getstarted" element={<GetStartedCard />} />

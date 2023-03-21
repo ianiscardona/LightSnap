@@ -2,7 +2,7 @@ import React from "react";
 
 export const HomeContact = () => {
   return (
-    <div className="relative lg:pb-40 bg-[#232325]">
+    <div id="inquire" className="relative lg:pb-40 bg-[#232325]">
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 lg:mx-28 pt-20 lg:pt-40">
         {/* Contact Info Section */}
         <div className='relative overflow-hidden font-["Inter"] text-[#FAF9F6] bg-[#1C0EB7] lg:rounded-[30px] order-last lg:order-first pb-11 pl-9 lg:pl-10'>
@@ -88,7 +88,7 @@ export const HomeContact = () => {
             <input
               type="text"
               placeholder="Name"
-              className="w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
+              className="outline-none w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
               required
             />
             <br />
@@ -97,7 +97,7 @@ export const HomeContact = () => {
             <input
               type="email"
               placeholder="Email @domain.com"
-              className="w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
+              className="outline-none w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
               required
             />
             <br />
@@ -105,7 +105,7 @@ export const HomeContact = () => {
             <br />
             <textarea
               placeholder="Type your message here..."
-              className="message w-full mb-8 lg:mb-16 h-28 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6 pt-1 lg:pt-3"
+              className="outline-none message w-full mb-8 lg:mb-16 h-28 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6 pt-1 lg:pt-3"
               required
             ></textarea>
             <div className="text-center">
