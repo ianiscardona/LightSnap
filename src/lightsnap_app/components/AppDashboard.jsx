@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { MdFlipCameraAndroid } from "react-icons/md";
+import { MdFlipCameraAndroid,MdImage } from "react-icons/md";
 import { FramesData } from "../data/frames_data";
 import { Frames } from "./Frames";
 import ProcessImages from "../components/ProcessImages";
 import Webcam from "react-webcam";
+import { Link } from "react-router-dom";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -112,7 +113,7 @@ export const AppDashboard = () => {
             </button>
           </div>
           <div className="px-[35px] w-full flex flex-nowrap overflow-x-auto snap-x mb-3 scroll-pl-[35px]">
-            <div className="flex space-x-4">{framesInfo}</div>
+            <div className="flex space-x-4">{framesInfo}</div> {/*HERE*/}
           </div>
           <div className="relative grid grid-cols-3 grid-rows-4">
             <button
@@ -129,6 +130,11 @@ export const AppDashboard = () => {
                 <circle cx="12" cy="12" r="8" fill="black" />
               </svg>
             </button>
+              <button className='mr-4 col-start-3 row-start-2 justify-self-end row-span-2 max-w-fit max-h-fit'>
+              <Link to="/eventgallery">
+                  <MdImage className="w-11 h-11" />
+              </Link>
+              </button>
           </div>
         </div>
       </div>
