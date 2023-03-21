@@ -6,10 +6,10 @@ export const AfterCamModal = ({open}) => {
   
     const [modalOpen, setModalOpen] = useState(true);
   return (
-    <div className='fixed inset-0 bg-opacity-25 backdrop-blur flex justify-center items-center '>
+    <div className='fixed inset-0 bg-opacity-25 bg-[#5E5A5A] backdrop-blur flex justify-center items-center px-3 '>
         {modalOpen ? ( 
-            <div className='customGetStarted px-14 py-5 flex flex-col justify-center items-center bg-slate-200 font-[Inter] rounded-2xl'>
-                <div className='bg-black w-[300px] h-[400px]'></div>
+            <div className='customWalkthrough sm:scale-[60%] md:scale-[40%] px-4 py-5 flex flex-col justify-center items-center bg-white font-[Inter] rounded-2xl'>
+                <div className=' '><img className='bg-cover' src='../images/mockup.png'/></div>
                 <div className='flex gap-20 sm:gap-24 py-5'>
                     <Link to="/photobooth"><button className='flex items-center justify-center w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-[#D82020]'>
                         <img src='../icons/return.png' alt='Return Button' className='sm:h-12 sm:w-10' />
@@ -21,9 +21,9 @@ export const AfterCamModal = ({open}) => {
         </div>
             
         ):(       
-            <div className='relative flex flex-col items-center justify-center customGetStarted py-5 bg-slate-400 font-[Inter] rounded-2xl'> 
-                <div className='absolute overflow-hidden -translate-y-[100%] sm:-translate-y-[130%]  w-[169px] h-[190px] sm:w-[200px] sm:h-[200px] bg-black '></div>
-                <h1 className=' font-medium pt-8 pb-3 text-4xl sm:text-5xl mt-14'>Nice!</h1>
+            <div className='relative lg:scale-[80%] py-5 flex flex-col items-center justify-center bg-white font-[Inter] rounded-2xl'> 
+                <div className='absolute overflow-hidden -translate-y-[100%] sm:-translate-y-[130%]  w-[169px] h-[190px] sm:w-[200px] sm:h-[200px] bg-black flex items-center'> <img className='bg-cover' src='../images/mockup.png'/></div>
+                <h1 className=' font-medium pt-8 pb-3 text-4xl sm:text-5xl mt-14 text-black'>Nice!</h1>
                 <div className='flex flex-col pb-6 sm:pb-12 gap-y-3 sm:gap-y-5' >
                     <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-16 text-black bg-[#1AE92F] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-bold text-base sm:text-xl">Share</h2>
