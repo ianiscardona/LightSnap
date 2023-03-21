@@ -2,48 +2,25 @@ import React from 'react'
 
 
 export const WalkthroughInfo = (props) => {
-  console.log(props.id);
-  
-  if(props.id){
-    console.log(props.desc);
-  }
 
   return (
     <>
-        <p className='font-medium text-4xl text-center sm:text-6xl md:text-5xl lg:text-6xl'>
-            {props.header}
-        </p>
-        <img src={`../images/${props.img}`} alt="walkthrough-1" className='h-full w-full sm:w-[90%] md:w-[80%] lg:w-[75%] xl:w-[80%]'/>
-        <p className='font-normal text-base text-center sm:text-2xl lg:text-3xl mb-3 sm:mb-10 mx-6 sm:mx-14 md:mx-20 lg:mx-24'>
-          {props.id === 1 ? props.desc.split(" ").map((val, key) => {
-              if (["Trio", "Solo", "Duo"].includes(val.split(",")[0]))
+      <p className='font-medium text-3xl sm:text-5xl text-center mt-3 sm:mt-20 lg:mt-0'>
+          {props.header.split(" ").map((val,key) => {
+              if (["Mode", "Frame", "Photo","Print!"].includes(val))
+              return <span key={key} style={{display:"block"}}>{val}</span>;
+              return `${val} `;
+          })}
+      </p>
+      <img src={`../images/${props.img}`} alt='walkthrough' className='h-[85%] w-[85%] sm:h-[70%] sm:w-[70%] lg:h-[400px] lg:w-[400px]' />
+      <p className='font-normal text-sm sm:text-2xl text-center mx-6 sm:mx-20 lg:mx-40 sm:mb-10 lg:mb-5'>
+           {props.desc.split(" ").map((val, key) => {
+              if (["Trio", "Solo", "Duo","Hold","Preview!"].includes(val.split(",")[0]))
                 return <b key={key}>{val} </b>;
                 return `${val} `;
-            }):null}
-
-            {props.id === 2 ? props.desc.substr(65).split(" ").map((val, key) => {
-              if (["Hold","the","frame","for","Preview!"].includes(val))
-                return <b key={key}>{val} </b>;
-                return `${val} `;
-            }):null}
-
-            {props.id === 3 ? props.desc:null}
-            {props.id === 4 ? props.desc:null}
-            {/* {props.desc} */}
-
-            {/* {props.desc.split(" ").map((val, key) => {
-              if (["Trio", "Solo", "Duo"].includes(val.split(",")[0]))
-                return <b key={key}>{val} </b>;
-                return `${val} `;
-
-            })} */}
-            {/* {props.desc.substr(65).split(" ").map((val, key) => {
-              if (["Hold","the","frame","for","Preview!"].includes(val))
-                return <b key={key}>{val} </b>;
-                return `${val} `;
-            })} */}
-
-        </p>
+            })} 
+          
+      </p>
     </>
   )
 }
