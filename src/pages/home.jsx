@@ -5,6 +5,7 @@ import { HomeContact } from "../landing_page/components/HomeContact";
 import { HomeHero } from "../landing_page/components/HomeHero";
 import { Navbar } from "./navbar";
 
+
 export const Home = () => {
   return (
       <div className="relative">
@@ -12,7 +13,7 @@ export const Home = () => {
           <HomeHero />
           <HomeAbout />
           <HomeBenefits />
-          <HomeContact />
+          <HomeContact /> 
       </div>
   );
 };

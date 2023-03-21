@@ -1,5 +1,6 @@
 import React from 'react'
 import sad from "/images/sad.png"
+import { Link } from 'react-router-dom'
 
 
 export const EventCodeError = () => {
@@ -24,11 +25,11 @@ export const EventCodeError = () => {
                         md:-translate-y-[41rem] md:px-[5.438rem] md:py-[4rem]'>
         <div className='items-center flex flex-col'>
                 <div className='pb-6'>
-                  <button className="flex items-center justify-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+                  <Link to="/eventcode"><button className="flex items-center justify-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                     <h2 className="font-bold text-base sm:text-xl">Back</h2>
-                  </button>
+                  </button></Link>
                 </div>
-                <h1 className=' underline text-[#1C0EB7] font-medium text-sm sm:text-xl'>Contact Us</h1>
+                <Link to="/contact"><h1 className=' underline text-[#1C0EB7] font-medium text-sm sm:text-xl'>Contact Us</h1></Link>
             </div>
           
         </div>
