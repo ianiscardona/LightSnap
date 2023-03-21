@@ -7,6 +7,7 @@ import { GetStartedCard } from "./lightsnap_app/components/GetStartedCard";
 import { WalkthroughCard } from "./lightsnap_app/components/WalkthroughCard";
 import { AppDashboard } from "./lightsnap_app/components/AppDashboard";
 import { EventGallery } from "./lightsnap_app/components/EventGallery";
+import { HomeContact } from "./landing_page/components/HomeContact";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/getstarted" element={<GetStartedCard />} />
         <Route path="/walkthrough" element={<WalkthroughCard />} />
         <Route path="/photobooth" element={<AppDashboard />} />
+        <Route path ="/contact" element={<HomeContact/>}/>
       </Routes>
     </>
   );
