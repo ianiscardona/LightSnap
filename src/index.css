@@ -31,6 +31,15 @@ html {
   .customInstruction{
     font-size: 16px;
   }
+  .customGalleryScale{
+    scale: 70%;
+  }
+  .customMarginBottom{
+    margin-bottom: 0;
+  }
+  .customGalleryFont{
+    font-size: 36px;
+  }
 }
 
 /*Specifically for Galaxy Fold*/

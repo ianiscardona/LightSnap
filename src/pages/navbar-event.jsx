@@ -8,21 +8,21 @@ export const NavbarEvent= () => {
   console.log(toggle);
 
   return (
-    <div className='fixed flex flex-col lg:flex-row lg:items-center lg:justify-between lg:pl-24 lg:pr-16 lg:py-3 py-4 w-full bg-black lg:bg-black/75 z-50'>
+    <div className='fixed flex flex-col lg:flex-row lg:items-center lg:justify-between lg:px-24 lg:py-3 py-4 w-full bg-black lg:bg-black/75 z-50'>
       <Link to='/'>
         <p className='font-["Galada"] text-3xl text-white hidden lg:block'>
           LightSnap
         </p>
       </Link>
       <div className='hidden lg:flex'>
-        <ul className='flex items-center text-center text-base font-bold font-["Inter"] text-[#FAF9F6] gap-x-7'>
+        <ul className='flex items-center text-center text-base font-bold font-["Inter"] text-[#FAF9F6] gap-x-12'>
             <Link to='/'>
               <li>
                 Home
               </li>
             </Link>
             <Link to='/'>
-              <li className='rounded-[40px] bg-[#1C0EB7] border-2 border-solid border-[#FAF9F6] px-6 py-3'>
+              <li>
                 Inquire
               </li>
             </Link>
