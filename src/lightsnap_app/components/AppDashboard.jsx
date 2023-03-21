@@ -39,11 +39,14 @@ export const AppDashboard = () => {
       setCapturedImages([...capturedImages, imageSrc]);
     }
   };
-  // const startCapture = () => {
-  //   setInterval(() => {
-  //     capture();
-  //   }, 5000);
-  // };
+  const startCapture = () => {
+    const interval = setInterval(() => {
+      capture();
+      if (capturedImages.length >= showcaseMode) {
+        clearInterval(interval);
+      }
+    }, 2000);
+  };
 
   const framesInfo = FramesData.map((item, index) => {
     return (
@@ -64,11 +67,11 @@ export const AppDashboard = () => {
     <>
       <div className="relative w-full h-screen">
         <div className="relative flex flex-col items-center justify-center h-screen">
-          <div className="flex overflow-hidden w-[328px] h-[446px] items-center justify-center">
+          <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
               className={`object-cover border border-black ${
                 showcaseMode == 1
-                  ? "w-[328px] h-[446px]"
+                  ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
                   ? "w-[328px] h-[328px]"
                   : showcaseMode == 3
@@ -122,7 +125,7 @@ export const AppDashboard = () => {
               <MdFlipCameraAndroid className="w-11 h-11" />
             </button>
             <button
-              onClick={capture}
+              onClick={startCapture}
               className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all duration-500"
             >
               <svg viewBox="0 0 24 24" className="w-[105px] h-[105px] m-auto">
@@ -133,7 +136,7 @@ export const AppDashboard = () => {
         </div>
       </div>
       <div className="container mx-auto">
-        <ProcessImages images={capturedImages} />
+        <ProcessImages images={capturedImages} showcase={showcaseMode} />
       </div>
     </>
   );
