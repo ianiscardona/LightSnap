@@ -12,10 +12,10 @@ export const GalleryModal = ({open, onClose}) => {
         <div classname=' relative flex flex-col justify-center items-center font-[Inter]'>
             {imgOpen ? (
               <div className='relative customWalkthrough w-80 sm:w-[400px]'>
-                <img className='relative pb-5' src="../images/frames/solo/lws-eleven-frame-solo.png"/>
+                <img className='relative pb-5' src="../images/mockup.png"/>
                 <div className='w-full flex content-center'>
                   <button onClick={() => setimgOpen(!imgOpen)} className="m-auto rounded-full w-32 h-10 sm:w-52 sm:h-16 text-white border-white border-2 bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
-                    <h2 className="font-bold text-base sm:text-xl">Download</h2>
+                    <h2 className="font-bold text-base sm:text-xl">DOWNLOAD</h2>
                   </button>
                 </div>
               </div>)
@@ -30,7 +30,7 @@ export const GalleryModal = ({open, onClose}) => {
                 </div>
                 <div className='w-full flex content-center'>
                   <button onClick={()=> onClose()} className=" m-auto rounded-full w-32 h-10 sm:w-52 sm:h-16 text-white border-white border-2 bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
-                      <h2 className="font-bold text-base sm:text-xl">Close</h2>
+                      <h2 className="font-bold text-base sm:text-xl">CLOSE</h2>
                   </button>
               </div> 
               </div> 

@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { NavbarEvent } from '../../pages/navbar-event'
+import { Placeholder } from './placeholder';
 
 export const EventGallery = () => {
 
@@ -29,18 +30,18 @@ export const EventGallery = () => {
           </div>
           {/* Image Grids */}
           <div className={`mx-7 lg:ml-24 lg:mr-16 flex-wrap gap-5 justify-center lg:justify-start ${submit ? "flex":"hidden"}`}>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
-            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
+            <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'><Placeholder/></div>
             <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
             <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
             <div className='h-[170px] w-[185px] lg:h-[150px] lg:w-[150px] bg-white'></div>
