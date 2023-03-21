@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,48 +16,37 @@
   resize: none;
 }
 
-@media all and (max-width: 414px){
-  .custom {
-    scale: 85%;
+/*For max-width of 360px*/
+@media all and (max-width: 360px) {
+  .customGetStarted {
+    scale:85%;
+    max-height: 90vh;
   }
-  .walkthroughCustom{
-    scale: 70%;
+  .customWalkthrough {
+    scale:85%;
   }
-}
-
-@media all and (width: 320px) and (height: 568px){
-  .custom {
-    scale: 80%;
+  .customEvent {
+    font-size: 36px;
   }
-  .walkthroughCustom{
-    scale: 80%;
-  }
-}
-
-@media all and (width: 280px){
-  .custom {
-    scale: 80%;
-  }
-  .walkthroughCustom{
-    scale: 80%;
+  .customInstruction{
+    font-size: 16px;
   }
 }
 
-@media all and (width: 375px) and (height: 812px){
-  .custom {
-    scale: 100%;
-  }
-  .walkthroughCustom{
-    scale: 80%;
+/*Specifically for Galaxy Fold*/
+@media all and (max-width: 280px) {
+  .customWalkthrough {
+    scale:75%;
   }
 }
 
-@media all and (width: 540px) and (height: 720px){
-  .custom {
-    scale: 90%;
+/*Specifically for Iphone 4*/
+@media all and (width: 320px) and (height: 480px) {
+  .customGetStarted {
+    scale:80%;
+    max-height: 90vh;
   }
-  .walkthroughCustom{
-    scale: 90%;
+  .customWalkthrough {
+    scale:75%;
   }
 }
-

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 
 export const EventCode = () => {
   return (
@@ -27,7 +28,9 @@ export const EventCode = () => {
                 
                 <form className='flex flex-col justify-center text-center items-center gap-y-2'>
                     <input type="text" placeholder="Enter Event Code" className=' border-[1px] border-[#000000] text-[#000000] text-center rounded-xl w-80 h-12 sm:w-96 sm:h-16'/>
-                    <input type="submit" value='Enter' className="flex items-center justify-center text-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"/>               
+                    <Link to='/getstarted'>
+                      <input type="submit" value='Enter' className="flex items-center justify-center text-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"/>               
+                    </Link>
                 </form>
                 
                 <button className=' underline text-[#1C0EB7] font-medium text-sm sm:text-xl '>Contact Us</button>

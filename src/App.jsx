@@ -1,13 +1,22 @@
 import React from "react";
 import { Home } from "./pages/home";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
+import { EventCode } from "./lightsnap_app/components/EventCode";
+import { GetStartedCard } from "./lightsnap_app/components/GetStartedCard";
+import { WalkthroughCard } from "./lightsnap_app/components/WalkthroughCard";
+import { AppDashboard } from "./lightsnap_app/components/AppDashboard";
+import { EventGallery } from "./lightsnap_app/components/EventGallery";
 
 function App() {
   return (
     <>
-      <Home />
       <Routes>
-        <Route path="/home" element={<Home />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/eventgallery" element={<EventGallery />} />
+        <Route path="/eventcode" element={<EventCode />} />
+        <Route path="/getstarted" element={<GetStartedCard />} />
+        <Route path="/walkthrough" element={<WalkthroughCard />} />
+        <Route path="/photobooth" element={<AppDashboard />} />
       </Routes>
     </>
   );
