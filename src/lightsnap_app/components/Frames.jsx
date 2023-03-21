@@ -13,7 +13,7 @@ export const Frames = (props) => {
       >
         <img
           className="overflow-hidden object-cover"
-          src={`../public/icons/frameicon/${props.icon}`}
+          src={`../icons/frameicon/${props.icon}`}
           alt=""
         />
       </button>
