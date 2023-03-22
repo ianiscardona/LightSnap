@@ -61,6 +61,7 @@ export const AppDashboard = () => {
       />
     );
   });
+  console.log("FRAME"+activeId);
   return (
     <>
       <div className="relative w-full h-screen">
