@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { MdFlipCameraAndroid } from "react-icons/md";
 import { FramesData } from "../data/frames_data";
 import { Frames } from "./Frames";
@@ -15,17 +15,28 @@ export const AppDashboard = () => {
     height: 446,
     facingMode: "user",
   });
-  const webcamRef = React.useRef(null);
+  const webcamRef = useRef(null);
+  const intervalRef = useRef(null);
+  const [isCaptureFinished, setIsCaptureFinished] = useState(false);
+
+  useEffect(() => {
+    console.log(showcaseMode);
+  }, [showcaseMode]);
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
     setVideoConstraints({ ...videoConstraints, width, height });
   };
-
-  const handleSolo = () => handleModeChange(1, 1, 328, 446);
-  const handleDuo = () => handleModeChange(2, 2, 328, 328);
-  const handleTrio = () => handleModeChange(3, 3, 328, 185);
+  const handleSolo = () => {
+    handleModeChange(1, 1, 328, 446);
+  };
+  const handleDuo = () => {
+    handleModeChange(2, 2, 328, 328);
+  };
+  const handleTrio = () => {
+    handleModeChange(3, 3, 328, 185);
+  };
 
   const switchCamera = () => {
     const newFacingMode =
@@ -33,42 +44,75 @@ export const AppDashboard = () => {
     setVideoConstraints({ ...videoConstraints, facingMode: newFacingMode });
   };
 
-  const capture = () => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    if (capturedImages.length < showcaseMode) {
-      setCapturedImages([...capturedImages, imageSrc]);
+  const startCapture = () => {
+    let width, height;
+    if (showcaseMode === 1) {
+      width = 1280;
+      height = 1706;
+    } else if (showcaseMode === 2) {
+      width = 1145;
+      height = 1145;
+    } else if (showcaseMode === 3) {
+      width = 1024;
+      height = 573;
     }
+    intervalRef.current = setInterval(() => {
+      setCapturedImages((prevImages) => {
+        if (prevImages.length < showcaseMode) {
+          return [
+            ...prevImages,
+            webcamRef.current.getScreenshot({ width, height }),
+          ];
+        } else {
+          clearInterval(intervalRef.current);
+          setIsCaptureFinished(true);
+          return prevImages;
+        }
+      });
+    }, 2000);
   };
-  // const startCapture = () => {
-  //   setInterval(() => {
-  //     capture();
-  //   }, 5000);
-  // };
+  const framesInfo = () => {
+    return FramesData.map((item, index) => {
+      let frame;
+      if (showcaseMode === 1) {
+        frame = item.soloframe;
+      } else if (showcaseMode === 2) {
+        frame = item.duoframe;
+      } else if (showcaseMode === 3) {
+        frame = item.trioframe;
+      }
 
-  const framesInfo = FramesData.map((item, index) => {
-    return (
-      <Frames
-        key={index}
-        id={item.id}
-        title={item.title}
-        icon={item.icon}
-        soloframe={item.soloframe}
-        duoframe={item.duoframe}
-        trioframe={item.trioframe}
-        onClick={() => setActiveId(item.id)}
-        isActive={activeId === item.id}
-      />
-    );
-  });
+      return {
+        id: item.id,
+        frame,
+        frames: (
+          <Frames
+            key={index}
+            id={item.id}
+            title={item.title}
+            icon={item.icon}
+            selectedFrame={frame}
+            setActiveId={setActiveId}
+            isActive={activeId === item.id}
+          />
+        ),
+      };
+    });
+  };
+
+  const selectedFrame = framesInfo().find(
+    (frame) => frame.id === activeId
+  )?.frame;
+
   return (
     <>
       <div className="relative w-full h-screen">
         <div className="relative flex flex-col items-center justify-center h-screen">
-          <div className="flex overflow-hidden w-[328px] h-[446px] items-center justify-center">
+          <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
               className={`object-cover border border-black ${
                 showcaseMode == 1
-                  ? "w-[328px] h-[446px]"
+                  ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
                   ? "w-[328px] h-[328px]"
                   : showcaseMode == 3
@@ -112,7 +156,9 @@ export const AppDashboard = () => {
             </button>
           </div>
           <div className="px-[35px] w-full flex flex-nowrap overflow-x-auto snap-x mb-3 scroll-pl-[35px]">
-            <div className="flex space-x-4">{framesInfo}</div>
+            <div className="flex space-x-4">
+              {framesInfo().map((frame) => frame.frames)}
+            </div>
           </div>
           <div className="relative grid grid-cols-3 grid-rows-4">
             <button
@@ -122,7 +168,7 @@ export const AppDashboard = () => {
               <MdFlipCameraAndroid className="w-11 h-11" />
             </button>
             <button
-              onClick={capture}
+              onClick={startCapture}
               className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all duration-500"
             >
               <svg viewBox="0 0 24 24" className="w-[105px] h-[105px] m-auto">
@@ -133,7 +179,13 @@ export const AppDashboard = () => {
         </div>
       </div>
       <div className="container mx-auto">
-        <ProcessImages images={capturedImages} />
+        {isCaptureFinished && (
+          <ProcessImages
+            capturedImages={capturedImages}
+            showcaseMode={showcaseMode}
+            selectedFrame={`/images/frames/${selectedFrame}`}
+          />
+        )}
       </div>
     </>
   );
