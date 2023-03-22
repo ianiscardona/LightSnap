@@ -5,8 +5,13 @@ export const Frames = (props) => {
   return (
     <div>
       <button
-        onClick={() => {
-          props.setActiveId(props.id);
+        onTouchStart={() => {
+            props.setActiveId(props.id);
+            props.setLongPress(true); //Show FramePreview
+        }}
+        onTouchEnd={() => {
+            props.setActiveId(props.id);
+            props.setLongPress(false); //Hide FramePreview
         }}
         className={`w-[77px] h-[77px] relative overflow-hidden snap-start border-2 ${toggleClassCheck(
           props.isActive

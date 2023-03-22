@@ -5,6 +5,7 @@ import { Frames } from "./Frames";
 import ProcessImages from "../components/ProcessImages";
 import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
+import { FramePreview } from "./FramePreview";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -19,10 +20,8 @@ export const AppDashboard = () => {
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
   const [isCaptureFinished, setIsCaptureFinished] = useState(false);
+  const [longpress, setLongPress] = useState(false);
 
-  useEffect(() => {
-    console.log(showcaseMode);
-  }, [showcaseMode]);
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
@@ -94,6 +93,7 @@ export const AppDashboard = () => {
             icon={item.icon}
             selectedFrame={frame}
             setActiveId={setActiveId}
+            setLongPress={setLongPress}
             isActive={activeId === item.id}
           />
         ),
@@ -107,6 +107,10 @@ export const AppDashboard = () => {
 
   return (
     <>
+      <FramePreview 
+        frame={selectedFrame}
+        isPreview={longpress}
+      />
       <div className="relative w-full h-screen">
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
