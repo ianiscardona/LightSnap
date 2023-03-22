@@ -7,7 +7,7 @@ export const GalleryModal = ({open, onClose}) => {
   const [imgOpen, setimgOpen] = useState(true);
 
   return (
-    <div className='fixed inset-0 bg-opacity-25 backdrop-blur flex justify-center items-center w-full'>
+    <div className='fixed inset-0 bg-opacity-30 backdrop-blur flex justify-center items-center w-full'>
       <div onClick={()=> onClose()} className='absolute w-full h-full'></div>
         <div classname=' relative flex flex-col justify-center items-center font-[Inter]'>
             {imgOpen ? (

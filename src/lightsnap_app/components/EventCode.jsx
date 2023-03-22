@@ -1,16 +1,26 @@
-import React,{useState} from 'react'
-import {Link} from "react-router-dom"
+import axios from 'axios'
+import React,{useContext, useState} from 'react'
+import {Link, useNavigate} from "react-router-dom"
+import { AuthContext } from '../../context/AuthContext'
 
 export const EventCode = () => {
+  const navigate = useNavigate()
+  const { setIsLoggedIn } = useContext(AuthContext)
+  const [code, isCode] = useState("")
 
-  const [code, isCode] = useState("");
-  let auth = false;
-  const pass = "123";
-  if(code === pass){
-    auth = true;
-  }else{
-    auth = false;
+
+  const logIn = async() => {
+
+    const res = await axios.post("/login", {code})
+    
+    if (!res.status === 200 ) {setIsLoggedIn(false) 
+    navigate("/eventcodeerror") } 
+      else {
+        setIsLoggedIn(true)
+        navigate("/getstarted")
+      }
   }
+  
 
   return (
     <div className='flex flex-col relative items-center w-full h-screen overflow-hidden mx-auto'>
@@ -38,13 +48,10 @@ export const EventCode = () => {
                 
                 <form className='flex flex-col justify-center text-center items-center gap-y-2'>
                     <input onChange={(e) => isCode(e.target.value)} type="text" placeholder="Enter Event Code" className=' border-[1px] border-[#000000] text-[#000000] text-center rounded-xl w-80 h-12 sm:w-96 sm:h-16'/>
-                    {auth ? 
-                    <Link to='/getstarted'>
-                      <input type="submit" value='Enter' className="flex items-center justify-center text-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"/>               
-                    </Link>:<Link to='/eventcodeerror'>
-                      <input type="submit" value='Enter' className="flex items-center justify-center text-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"/>               
-                    </Link>
-                    }
+                    
+                    
+                    <input type="button" onClick={logIn} value='Enter' className="flex items-center justify-center text-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"/>               
+                    
                 </form>
                 
                 <Link to="/contact"><button className=' underline text-[#1C0EB7] font-medium text-sm sm:text-xl '>Contact Us</button></Link>
