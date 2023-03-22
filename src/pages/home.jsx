@@ -9,12 +9,12 @@ import { Navbar } from "./navbar";
 export const Home = () => {
   return (
     <div className="relative">
-      {/* <Navbar />
-          <HomeHero />
-          <HomeAbout />
-          <HomeBenefits />
-          <HomeContact />  */}
-      <ProcessImages />
+      <Navbar />
+      <HomeHero />
+      <HomeAbout />
+      <HomeBenefits />
+      <HomeContact />
+      {/* <ProcessImages /> */}
     </div>
   );
 };
