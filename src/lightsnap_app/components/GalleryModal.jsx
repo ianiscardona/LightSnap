@@ -9,7 +9,7 @@ export const GalleryModal = ({open, onClose}) => {
   return (
     <div className='fixed inset-0 bg-opacity-25 backdrop-blur flex justify-center items-center w-full'>
       <div onClick={()=> onClose()} className='absolute w-full h-full'></div>
-        <div classname=' relative flex flex-col justify-center items-center font-[Inter]'>
+        <div className=' relative flex flex-col justify-center items-center font-[Inter]'>
             {imgOpen ? (
               <div className='relative customWalkthrough w-80 sm:w-[400px]'>
                 <img className='relative pb-5' src="../images/mockup.png"/>
