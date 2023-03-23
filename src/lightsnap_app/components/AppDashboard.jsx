@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MdFlipCameraAndroid } from "react-icons/md";
+import { MdFlipCameraAndroid,MdImage } from "react-icons/md";
 import { FramesData } from "../data/frames_data";
 import { Frames } from "./Frames";
 import ProcessImages from "../components/ProcessImages";
 import Webcam from "react-webcam";
+import { Link } from "react-router-dom";
+import { FramePreview } from "./FramePreview";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -18,10 +20,8 @@ export const AppDashboard = () => {
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
   const [isCaptureFinished, setIsCaptureFinished] = useState(false);
+  const [longpress, setLongPress] = useState(false);
 
-  useEffect(() => {
-    console.log(showcaseMode);
-  }, [showcaseMode]);
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
@@ -93,6 +93,7 @@ export const AppDashboard = () => {
             icon={item.icon}
             selectedFrame={frame}
             setActiveId={setActiveId}
+            setLongPress={setLongPress}
             isActive={activeId === item.id}
           />
         ),
@@ -102,6 +103,10 @@ export const AppDashboard = () => {
 
   return (
     <>
+      <FramePreview 
+        frame={selectedFrame}
+        isPreview={longpress}
+      />
       <div className="relative w-full h-screen">
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
@@ -171,6 +176,11 @@ export const AppDashboard = () => {
                 <circle cx="12" cy="12" r="8" fill="black" />
               </svg>
             </button>
+              <button className='mr-4 col-start-3 row-start-2 justify-self-end row-span-2 max-w-fit max-h-fit'>
+              <Link to="/eventgallery">
+                  <MdImage className="w-11 h-11" />
+              </Link>
+              </button>
           </div>
         </div>
       </div>
