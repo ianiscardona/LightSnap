@@ -53,8 +53,8 @@ export const AppDashboard = () => {
       width = 1145;
       height = 1145;
     } else if (showcaseMode === 3) {
-      width = 1024;
-      height = 573;
+      width = 1030;
+      height = 579;
     }
     intervalRef.current = setInterval(() => {
       setCapturedImages((prevImages) => {
@@ -100,17 +100,13 @@ export const AppDashboard = () => {
     });
   };
 
-  const selectedFrame = framesInfo().find(
-    (frame) => frame.id === activeId
-  )?.frame;
-
   return (
     <>
       <div className="relative w-full h-screen">
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`object-cover border border-black ${
+              className={`object-cover border border-black overflow-hidden ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -118,7 +114,7 @@ export const AppDashboard = () => {
                   : showcaseMode == 3
                   ? "w-[328px] h-[185px]"
                   : ""
-              } transition-all`}
+              } transition-all custom-camera`}
             >
               <Webcam
                 audio={false}
@@ -129,7 +125,7 @@ export const AppDashboard = () => {
             </div>
           </div>
 
-          <div className="relative flex space-x-2 mt-5 mb-5">
+          <div className="relative flex space-x-2 mt-5 mb-5 custom-buttons">
             <button
               onClick={handleSolo}
               className={`flex items-center justify-center rounded-full w-[102px] h-[29px] bg-[#D9D9D9] text-black ${
@@ -155,21 +151,21 @@ export const AppDashboard = () => {
               <h2 className="text-base font-medium">Trio</h2>
             </button>
           </div>
-          <div className="px-[35px] w-full flex flex-nowrap overflow-x-auto snap-x mb-3 scroll-pl-[35px]">
-            <div className="flex space-x-4">
+          <div className="px-[35px] sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 scroll-pl-[35px] custom-frames transition-all">
+            <div className="flex space-x-4  min-h-fit">
               {framesInfo().map((frame) => frame.frames)}
             </div>
           </div>
           <div className="relative grid grid-cols-3 grid-rows-4">
             <button
               onClick={switchCamera}
-              className="ml-4 col-start-1 row-start-2 row-span-2 max-w-fit max-h-fit"
+              className="ml-4 col-start-1 row-start-2 row-span-2 max-w-fit max-h-fit custom-buttons transition-all"
             >
               <MdFlipCameraAndroid className="w-11 h-11" />
             </button>
             <button
               onClick={startCapture}
-              className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all duration-500"
+              className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all custom-buttons"
             >
               <svg viewBox="0 0 24 24" className="w-[105px] h-[105px] m-auto">
                 <circle cx="12" cy="12" r="8" fill="black" />
@@ -183,7 +179,9 @@ export const AppDashboard = () => {
           <ProcessImages
             capturedImages={capturedImages}
             showcaseMode={showcaseMode}
-            selectedFrame={`/images/frames/${selectedFrame}`}
+            selectedFrame={`/images/frames/${
+              framesInfo().find((frame) => frame.id === activeId)?.frame
+            }`}
           />
         )}
       </div>

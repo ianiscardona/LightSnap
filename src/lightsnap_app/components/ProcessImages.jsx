@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import mergeImages from "merge-images";
 
 const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode }) => {
-  const [src, setSrc] = useState("");
-  const [err, setErr] = useState("");
+  const [src, setSrc] = useState(null);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     console.log(selectedFrame);
@@ -19,7 +19,7 @@ const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode }) => {
       images = capturedImages.map((image, index) => ({
         src: image,
         x: 144,
-        y: 145 + index * 646,
+        y: 142 + index * 646,
       }));
     } else if (showcaseMode === 1) {
       images = capturedImages.map((image) => ({
@@ -42,17 +42,12 @@ const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode }) => {
   return (
     <div className="object-cover border border-black w-fit h-fit">
       {src && (
-        <img
-          src={src}
-          alt="Merged Images"
-          className="w-full h-full object-cover"
-        />
+        <img src={src} alt="Finish" className="w-full h-full object-cover" />
       )}
       {err && <p>{err}</p>}
     </div>
   );
 };
-
 export default ProcessImages;
 // imageMode === 1
 //   ? `../images/frames/solo/${
