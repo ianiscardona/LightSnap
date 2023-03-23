@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import mergeImages from "merge-images";
 
 const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode, setOutput }) => {
+  const [src, setSrc] = useState("");
   const [err, setErr] = useState("");
 
   useEffect(() => {
