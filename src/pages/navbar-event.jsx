@@ -5,10 +5,9 @@ export const NavbarEvent= () => {
 
   const [toggle, isToggle] = useState(false);
   const menu = () => isToggle(!toggle);
-  console.log(toggle);
 
   return (
-    <div className='fixed flex flex-col lg:flex-row lg:items-center lg:justify-between lg:px-24 lg:py-3 py-4 w-full bg-black lg:bg-black/75 z-50'>
+    <div className='fixed flex flex-col lg:flex-row lg:items-center lg:justify-between lg:px-24 lg:py-3 py-4 w-full bg-black/[0.85] lg:bg-black/75 z-50'>
       <Link to='/'>
         <p className='font-["Galada"] text-3xl text-white hidden lg:block'>
           LightSnap
