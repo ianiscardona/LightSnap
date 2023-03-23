@@ -3,7 +3,6 @@ import mergeImages from "merge-images";
 import { AfterCamModal } from "./AfterCamModal";
 
 const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode, setOutput }) => {
-  const [src, setSrc] = useState("");
   const [err, setErr] = useState("");
 
   useEffect(() => {
