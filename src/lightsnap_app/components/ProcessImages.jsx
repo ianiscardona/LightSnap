@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import mergeImages from "merge-images";
-import { AfterCamModal } from "./AfterCamModal";
 
 const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode, setOutput }) => {
   const [err, setErr] = useState("");
@@ -41,7 +40,6 @@ const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode, setOutput 
 
   return (
     <>
-    {/* <AfterCamModal src={src} /> */}
     <div className="object-cover border border-black w-fit h-fit">
       
         <img
