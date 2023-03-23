@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect} from "react";
 import { MdFlipCameraAndroid,MdImage } from "react-icons/md";
 import { FramesData } from "../data/frames_data";
 import { Frames } from "./Frames";
@@ -6,6 +6,7 @@ import ProcessImages from "../components/ProcessImages";
 import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
+import { AfterCamModal } from "./AfterCamModal";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -21,6 +22,7 @@ export const AppDashboard = () => {
   const intervalRef = useRef(null);
   const [isCaptureFinished, setIsCaptureFinished] = useState(false);
   const [longpress, setLongPress] = useState(false);
+  const [output, setOutput] = useState(null);
 
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
@@ -104,7 +106,7 @@ export const AppDashboard = () => {
   const selectedFrame = framesInfo().find(
     (frame) => frame.id === activeId
   )?.frame;
-
+  console.log(output);
   return (
     <>
       <FramePreview 
@@ -190,11 +192,15 @@ export const AppDashboard = () => {
       </div>
       <div className="container mx-auto">
         {isCaptureFinished && (
+          <>
           <ProcessImages
             capturedImages={capturedImages}
             showcaseMode={showcaseMode}
             selectedFrame={`/images/frames/${selectedFrame}`}
+            setOutput={setOutput}
           />
+          <AfterCamModal isShow={isCaptureFinished} output={output} />
+          </>
         )}
       </div>
     </>
