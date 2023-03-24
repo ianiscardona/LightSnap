@@ -35,13 +35,16 @@ const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode, setOutput 
         y: 0,
       },
     ])
-      .then((src) => setOutput(src))
+      .then((src) => {
+        setOutput(src);
+        setSrc(src);
+      })
       .catch((err) => setErr(err.toString()));
   }, [capturedImages, selectedFrame, showcaseMode]);
 
   return (
     <>
-    <div className="object-cover border border-black w-fit h-fit">
+    {/* <div className="object-cover border border-black w-fit h-fit">
       
         <img
           src={src}
@@ -50,7 +53,7 @@ const ProcessImages = ({ capturedImages, selectedFrame, showcaseMode, setOutput 
         />
 
       {err && <p>{err}</p>}
-    </div>
+    </div> */}
     </>
 
   );
