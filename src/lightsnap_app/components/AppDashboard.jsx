@@ -76,7 +76,6 @@ export const AppDashboard = () => {
     }, 2000);
   };
 
-  console.log(cue); //debug
 
   const framesInfo = () => {
     return FramesData.map((item, index) => {
