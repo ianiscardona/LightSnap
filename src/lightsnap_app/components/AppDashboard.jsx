@@ -23,7 +23,7 @@ export const AppDashboard = () => {
   const [isCaptureFinished, setIsCaptureFinished] = useState(false);
   const [longpress, setLongPress] = useState(false);
   const [output, setOutput] = useState(null);
-
+  const [cue, setCue] = useState(0);
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
@@ -68,11 +68,16 @@ export const AppDashboard = () => {
         } else {
           clearInterval(intervalRef.current);
           setIsCaptureFinished(true);
+          setCue(0);
           return prevImages;
         }
       });
+      setCue((prevCue) => prevCue + 1);
     }, 2000);
   };
+
+  console.log(cue); //debug
+
   const framesInfo = () => {
     return FramesData.map((item, index) => {
       let frame;
@@ -117,7 +122,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`object-cover border border-black ${
+              className={`relative object-cover border border-black ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -133,6 +138,9 @@ export const AppDashboard = () => {
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
               />
+              <div className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full p-2 m-2 ${showcaseMode === 1 ? "hidden":"block"}`}>
+                {cue}
+              </div>
             </div>
           </div>
 
