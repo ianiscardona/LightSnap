@@ -6,6 +6,8 @@ export const Navbar = () => {
   const [toggle, isToggle] = useState(false);
   const menu = () => isToggle(!toggle);
 
+  const scrollTop = () => window.scrollTo(0,0);
+
   return (
     <div className='fixed flex flex-col lg:flex-row lg:items-center lg:justify-between lg:px-24 lg:py-3 py-4 w-full bg-black/[0.85] lg:bg-black/75 z-50'>
       <Link to='/'>
@@ -29,7 +31,7 @@ export const Navbar = () => {
       </div>
       {/* Centered Logo */}
       <div className='flex items-center justify-center lg:hidden'>
-        <img src="../images/ls-lens-white.png" alt="LightSnap Logo" className='h-11 w-11'/>
+        <img src="../images/ls-lens-white.png" alt="LightSnap Logo" className='h-11 w-11' onClick={scrollTop}/>
       </div>
       {/* Mobile Menu */}
       <div className={`${toggle ? "flex flex-col pl-6 items-start lg:hidden":"hidden"} text-white`}>
