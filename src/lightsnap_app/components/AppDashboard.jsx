@@ -25,6 +25,12 @@ export const AppDashboard = () => {
   const [output, setOutput] = useState(null);
   const [cue, setCue] = useState(0);
 
+
+  useEffect(() => {
+    // const audio = new Audio("../shutter-click.wav");
+    console.log("Captured");
+  },[cue]);
+
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
@@ -137,9 +143,10 @@ export const AppDashboard = () => {
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
               />
-              <div className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full p-2 m-2 ${showcaseMode === 1 ? "hidden":"block"}`}>
+              <div className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${showcaseMode === 1 ? "hidden":"flex"}`}>
                 {cue}
               </div>
+              {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
             </div>
           </div>
 
