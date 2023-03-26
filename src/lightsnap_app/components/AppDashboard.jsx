@@ -24,6 +24,7 @@ export const AppDashboard = () => {
   const [longpress, setLongPress] = useState(false);
   const [output, setOutput] = useState(null);
   const [cue, setCue] = useState(0);
+  const [shutterClick, setShutterClick] = useState(false);
 
 
   useEffect(() => {
@@ -80,6 +81,7 @@ export const AppDashboard = () => {
       });
       setCue((prevCue) => prevCue + 1);
     }, 2000);
+    setShutterClick(true);
   };
 
 
@@ -189,6 +191,7 @@ export const AppDashboard = () => {
               <MdFlipCameraAndroid className="w-11 h-11" />
             </button>
             <button
+              disabled={shutterClick}
               onClick={startCapture}
               className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all duration-500"
             >
