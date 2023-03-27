@@ -9,6 +9,7 @@ export const Frames = (props) => {
             props.setActiveId(props.id);
             props.setLongPress(true); //Show FramePreview
         }}
+        
         onMouseLeave={() => {
             props.setActiveId(props.id);
             props.setLongPress(false); //Hide FramePreview
