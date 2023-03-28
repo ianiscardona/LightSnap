@@ -63,9 +63,7 @@ export const EventCode = () => {
                         -translate-y-[26rem] py-[.rem] space-y-3
                         sm:-translate-y-[35rem] sm:py-8 sm:space-y-5
                         md:-translate-y-[50rem]
-                        lg:-translate-y-[55rem] 
-
-                        ">
+                        lg:-translate-y-[55rem]">
                 /*<p className="text-center text-base font-medium w-80 px-[.5rem] pt-5 pb-4 md:px-0">A photobooth that you can access anywhere, with frames tailored for your event.</p>
                 
                 <form className='flex flex-col justify-center text-center items-center gap-y-2'>
