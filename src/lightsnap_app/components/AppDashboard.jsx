@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MdFlipCameraAndroid,MdImage } from "react-icons/md";
+import { MdFlipCameraAndroid, MdImage } from "react-icons/md";
 import { FramesData } from "../data/frames_data";
 import { Frames } from "./Frames";
 import ProcessImages from "../components/ProcessImages";
 import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
+import { AfterCamModal } from "./AfterCamModal";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -21,7 +22,7 @@ export const AppDashboard = () => {
   const intervalRef = useRef(null);
   const [isCaptureFinished, setIsCaptureFinished] = useState(false);
   const [longpress, setLongPress] = useState(false);
-
+  const [output, setOutput] = useState(null);
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
@@ -93,6 +94,7 @@ export const AppDashboard = () => {
             icon={item.icon}
             selectedFrame={frame}
             setActiveId={setActiveId}
+            longPress={longpress}
             setLongPress={setLongPress}
             isActive={activeId === item.id}
           />
@@ -101,12 +103,13 @@ export const AppDashboard = () => {
     });
   };
 
+  const selectedFrame = framesInfo().find(
+    (frame) => frame.id === activeId
+  )?.frame;
+  console.log(output);
   return (
     <>
-      <FramePreview 
-        frame={selectedFrame}
-        isPreview={longpress}
-      />
+      <FramePreview frame={selectedFrame} isPreview={longpress} />
       <div className="relative w-full h-screen">
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
@@ -135,7 +138,7 @@ export const AppDashboard = () => {
               onClick={handleSolo}
               className={`flex items-center justify-center rounded-full w-[102px] h-[29px] bg-[#D9D9D9] text-black ${
                 imageMode == 1 ? "bg-[rgb(28_14_183)] text-white" : null
-              } transition-all duration-300`}
+              } transition-all duration-300 removeTouch`}
             >
               <h2 className="text-base font-medium">Solo</h2>
             </button>
@@ -143,7 +146,7 @@ export const AppDashboard = () => {
               onClick={handleDuo}
               className={`flex items-center justify-center rounded-full w-[102px] h-[29px] bg-[#D9D9D9] text-black ${
                 imageMode == 2 ? "bg-[rgb(28_14_183)] text-white" : null
-              } transition-all duration-200`}
+              } transition-all duration-200 removeTouch`}
             >
               <h2 className="text-base font-medium">Duo</h2>
             </button>
@@ -151,7 +154,7 @@ export const AppDashboard = () => {
               onClick={handleTrio}
               className={`flex items-center justify-center rounded-full w-[102px] h-[29px] bg-[#D9D9D9] text-black ${
                 imageMode == 3 ? "bg-[rgb(28_14_183)] text-white" : null
-              } transition-all duration-200`}
+              } transition-all duration-200 removeTouch`}
             >
               <h2 className="text-base font-medium">Trio</h2>
             </button>
@@ -161,38 +164,40 @@ export const AppDashboard = () => {
               {framesInfo().map((frame) => frame.frames)}
             </div>
           </div>
-          <div className="relative grid grid-cols-3 grid-rows-4">
+          <div className="relative grid grid-cols-3 grid-rows-4 custom-buttons">
             <button
               onClick={switchCamera}
-              className="ml-4 col-start-1 row-start-2 row-span-2 max-w-fit max-h-fit custom-buttons transition-all"
+              className="ml-4 col-start-1 row-start-2 row-span-2 max-w-fit max-h-fit transition-all"
             >
               <MdFlipCameraAndroid className="w-11 h-11" />
             </button>
             <button
               onClick={startCapture}
-              className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all custom-buttons"
+              className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all"
             >
               <svg viewBox="0 0 24 24" className="w-[105px] h-[105px] m-auto">
                 <circle cx="12" cy="12" r="8" fill="black" />
               </svg>
             </button>
-              <button className='mr-4 col-start-3 row-start-2 justify-self-end row-span-2 max-w-fit max-h-fit'>
+            <button className="mr-4 col-start-3 row-start-2 justify-self-end row-span-2 max-w-fit max-h-fit">
               <Link to="/eventgallery">
-                  <MdImage className="w-11 h-11" />
+                <MdImage className="w-11 h-11" />
               </Link>
-              </button>
+            </button>
           </div>
         </div>
       </div>
       <div className="container mx-auto">
         {isCaptureFinished && (
-          <ProcessImages
-            capturedImages={capturedImages}
-            showcaseMode={showcaseMode}
-            selectedFrame={`/images/frames/${
-              framesInfo().find((frame) => frame.id === activeId)?.frame
-            }`}
-          />
+          <>
+            <ProcessImages
+              capturedImages={capturedImages}
+              showcaseMode={showcaseMode}
+              selectedFrame={`/images/frames/${selectedFrame}`}
+              setOutput={setOutput}
+            />
+            <AfterCamModal isShow={isCaptureFinished} output={output} />
+          </>
         )}
       </div>
     </>

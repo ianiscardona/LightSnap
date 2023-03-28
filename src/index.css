@@ -7,6 +7,15 @@ html {
   scroll-behavior: smooth;
 }
 
+.removeHighlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.removeTouch {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
 * {
   margin: 0;
   padding: 0;
