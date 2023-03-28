@@ -44,13 +44,21 @@ export const AppDashboard = () => {
     setVideoConstraints({ ...videoConstraints, width, height, aspectRatio });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 446, 328, 4 / 3);
+    if (isMobile) {
+      handleModeChange(1, 1, 446, 328, 4 / 3);
+    } else {
+      handleModeChange(1, 1, 328, 446, 4 / 3);
+    }
   };
   const handleDuo = () => {
     handleModeChange(2, 2, 328, 328, 1 / 1);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 185, 328, 9 / 16);
+    if (isMobile) {
+      handleModeChange(3, 3, 185, 328, 9 / 16);
+    } else {
+      handleModeChange(3, 3, 328, 185, 9 / 16);
+    }
   };
 
   const switchCamera = () => {
