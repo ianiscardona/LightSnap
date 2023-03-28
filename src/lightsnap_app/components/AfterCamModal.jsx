@@ -22,7 +22,7 @@ export const AfterCamModal = ({isShow,output}) => {
          
         if (navigator.share){
             navigator.share({
-                title: 'Hello',
+                title: 'LightSnap',
                 text: 'Check out this image!',
                 files: [file],
                 })
@@ -60,7 +60,7 @@ export const AfterCamModal = ({isShow,output}) => {
             </div>
             
         ):(       
-            <div className='relative lg:scale-[80%] py-5 flex flex-col items-center justify-center bg-white font-[Inter] rounded-2xl'> 
+            <div className='relative translate-y-[10%] lg:scale-[80%] py-5 flex flex-col items-center justify-center bg-white font-[Inter] rounded-2xl'> 
                 <div className='absolute overflow-hidden -translate-y-[100%] sm:-translate-y-[105%] h-[200px] sm:h-[250px] bg-black flex items-center'> <img className='object-cover h-[100%]' src={output}/></div>
                 <h1 className=' font-medium pt-8 pb-3 text-4xl sm:text-5xl mt-14 text-black'>Nice!</h1>
                 <div className='flex flex-col pb-6 sm:pb-5 gap-y-3 sm:gap-y-5' >
