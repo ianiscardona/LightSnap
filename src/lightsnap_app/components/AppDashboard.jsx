@@ -163,11 +163,10 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
-                isMirrored={isMirrored}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                mirrored={true}
+                mirrored={isMirrored}
                 videoConstraints={videoConstraints}
               />
               <div
