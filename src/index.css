@@ -24,9 +24,6 @@ html {
 .message {
   resize: none;
 }
-.webcam-portrait {
-  transform: rotate(90deg);
-}
 
 /*For max-width of 360px*/
 @media all and (max-width: 360px) {
