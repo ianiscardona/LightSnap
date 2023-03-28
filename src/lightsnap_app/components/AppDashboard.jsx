@@ -7,6 +7,7 @@ import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
+import { isMobile } from "react-device-detect";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -141,7 +142,6 @@ export const AppDashboard = () => {
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
               className={`relative object-cover border border-black ${
-
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
