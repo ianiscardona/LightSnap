@@ -5,12 +5,11 @@ export const Frames = (props) => {
   return (
     <div>
       <button
-        onMouseEnter={() => {
+        onTouchStart={() => {
             props.setActiveId(props.id);
             props.setLongPress(true); //Show FramePreview
         }}
-        
-        onMouseLeave={() => {
+        onTouchEnd={() => {
             props.setActiveId(props.id);
             props.setLongPress(false); //Hide FramePreview
         }}
