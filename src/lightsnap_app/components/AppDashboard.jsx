@@ -19,7 +19,7 @@ export const AppDashboard = () => {
     height: 446,
     facingMode: "user",
     aspectRatio: 4 / 3,
-    mirrored: true,
+    mirror: true,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -73,8 +73,12 @@ export const AppDashboard = () => {
   const switchCamera = () => {
     const newFacingMode =
       videoConstraints.facingMode === "user" ? "environment" : "user";
-    videoConstraints.mirrored === "user" ? "false" : "true";
-    setVideoConstraints({ ...videoConstraints, facingMode: newFacingMode });
+    const newMirror = newFacingMode === "user" ? true : false;
+    setVideoConstraints({
+      ...videoConstraints,
+      facingMode: newFacingMode,
+      mirror: newMirror,
+    });
   };
 
   const startCapture = () => {
