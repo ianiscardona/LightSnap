@@ -30,13 +30,13 @@ export const AppDashboard = () => {
     setVideoConstraints({ ...videoConstraints, width, height });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 328, 446);
+    handleModeChange(1, 1, 446,328);
   };
   const handleDuo = () => {
     handleModeChange(2, 2, 328, 328);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 328, 185);
+    handleModeChange(3, 3, 185, 328);
   };
 
   const switchCamera = () => {
@@ -114,7 +114,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`object-cover border border-black overflow-hidden ${
+              className={`portrait: object-cover border border-black overflow-hidden ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
