@@ -46,5 +46,5 @@ export const FramesData = [
     soloframe: "solo/lws-eleven-frame-solo.png",
     duoframe: "duo/lws-eleven-frame-duo.png",
     trioframe: "trio/lws-eleven-frame-trio.png",
-  },
+  }
 ];

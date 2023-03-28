@@ -40,7 +40,10 @@ const ProcessImages = ({
         y: 0,
       },
     ])
-      .then((src) => setOutput(src))
+      .then((src) => {
+        setOutput(src);
+        setSrc(src);
+      })
       .catch((err) => setErr(err.toString()));
   }, [capturedImages, selectedFrame, showcaseMode]);
 
@@ -59,41 +62,3 @@ const ProcessImages = ({
   );
 };
 export default ProcessImages;
-// imageMode === 1
-//   ? `../images/frames/solo/${
-//       FramesData.find((item) => item.id === activeId)?.soloframe
-//     }`
-//   : imageMode === 2
-//   ? `../images/frames/duo/${
-//       FramesData.find((item) => item.id === activeId)?.duoframe
-//     }`
-//   : imageMode === 3
-//   ? `../images/frames/trio/${
-//       FramesData.find((item) => item.id === activeId)?.trioframe
-//     }`
-//   : ""
-
-// useEffect(() => {
-//   mergeImages([soloSample, frameSample])
-//     .then((src) => setSrc(src))
-//     .catch((err) => setErr(err.toString()));
-// }, []);
-// useEffect(() => {
-//   mergeImages([
-//     { src: duoSample, x: 68, y: 1485 },
-//     { src: duoSample, x: 68, y: 60 },
-//     { src: frameSample, x: 0, y: 0 },
-//   ])
-//     .then((src) => setSrc(src))
-//     .catch((err) => setErr(err.toString()));
-// }, []);
-// useEffect(() => {
-//   mergeImages([
-//     { src: trioSample, x: 144, y: 145 },
-//     { src: trioSample, x: 144, y: 793 },
-//     { src: trioSample, x: 144, y: 1439 },
-//     { src: frameSample, x: 0, y: 0 },
-//   ])
-//     .then((src) => setSrc(src))
-//     .catch((err) => setErr(err.toString()));
-// }, []);
