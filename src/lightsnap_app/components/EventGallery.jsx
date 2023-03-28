@@ -3,12 +3,11 @@ import { NavbarEvent } from '../../pages/navbar-event'
 import { Placeholder } from './Placeholder';
 
 export const EventGallery = () => {
-
-  const[submit, isSubmit] = useState(false);
+  const [submit, isSubmit] = useState(false);
   const click = () => isSubmit(!submit);
 
   return (
-    <div className='relative'>
+    <div className="relative">
       <NavbarEvent />
       <div className={`${submit ? "min-h-screen pb-12":"h-screen"} bg-black/90 pt-20 font-["Inter"] text-white`}>
           <div className='flex flex-col mt-3 mx-7 lg:mx-0 lg:ml-24 lg:mr-16 mb-4 justify-center'> 
@@ -64,5 +63,5 @@ export const EventGallery = () => {
             </div>
       </div>
     </div>
-  )
-}
+  );
+};

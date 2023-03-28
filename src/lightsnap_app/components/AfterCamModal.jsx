@@ -7,7 +7,6 @@ export const AfterCamModal = ({isShow,output}) => {
   
     const [modalOpen, setModalOpen] = useState(true);
     const [isOpen, setIsOpen] = useState(true);
-    
     const press = () => {
         setIsOpen(!isOpen);
         window.location.reload(true);
@@ -86,6 +85,7 @@ export const AfterCamModal = ({isShow,output}) => {
                     </button>
                 </div>
                 <div className='flex gap-3 px-4'>
+
                     <button onClick={press} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-normal text-base sm:text-xl">Cancel</h2>
                     </button>
