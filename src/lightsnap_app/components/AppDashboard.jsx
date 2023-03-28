@@ -38,13 +38,13 @@ export const AppDashboard = () => {
     setVideoConstraints({ ...videoConstraints, width, height });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 328, 446);
+    handleModeChange(1, 1, 446,328);
   };
   const handleDuo = () => {
     handleModeChange(2, 2, 328, 328);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 328, 185);
+    handleModeChange(3, 3, 185, 328);
   };
 
   const switchCamera = () => {
