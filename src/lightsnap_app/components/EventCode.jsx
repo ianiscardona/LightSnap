@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,7 +5,6 @@ import { Link } from "react-router-dom";
 //import React,{useContext, useState} from 'react'
 //import {Link, useNavigate} from "react-router-dom"
 //import { AuthContext } from '../../context/AuthContext'
-
 
 /*export const EventCode = () => {
   const navigate = useNavigate()
@@ -24,7 +22,6 @@ import { Link } from "react-router-dom";
         setIsLoggedIn(true)
         navigate("/getstarted")
       } */
-      
 
 export const EventCode = () => {
   const [code, isCode] = useState("");
@@ -35,7 +32,6 @@ export const EventCode = () => {
   } else {
     auth = false;
   }
-  
 
   return (
     <div className="flex flex-col relative items-center w-full h-screen overflow-hidden mx-auto">
@@ -58,13 +54,13 @@ export const EventCode = () => {
         </div>
       </div>
 
-      <div
+      {/* <div
         className="flex flex-col customGetStarted justify-center items-center w-full px-[4rem] font-[Inter]
                         -translate-y-[26rem] py-[.rem] space-y-3
                         sm:-translate-y-[35rem] sm:py-8 sm:space-y-5
                         md:-translate-y-[50rem]
                         lg:-translate-y-[55rem]">
-                /*<p className="text-center text-base font-medium w-80 px-[.5rem] pt-5 pb-4 md:px-0">A photobooth that you can access anywhere, with frames tailored for your event.</p>
+                <p className="text-center text-base font-medium w-80 px-[.5rem] pt-5 pb-4 md:px-0">A photobooth that you can access anywhere, with frames tailored for your event.</p>
                 
                 <form className='flex flex-col justify-center text-center items-center gap-y-2'>
                     <input onChange={(e) => isCode(e.target.value)} type="text" placeholder="Enter Event Code" className=' border-[1px] border-[#000000] text-[#000000] text-center rounded-xl w-80 h-12 sm:w-96 sm:h-16'/>
@@ -75,10 +71,15 @@ export const EventCode = () => {
                 </form>
                 
                 <Link to="/contact"><button className=' underline text-[#1C0EB7] font-medium text-sm sm:text-xl '>Contact Us</button></Link>
-        </div> 
-        */
-        
-                 
+        </div>  */}
+
+      <div
+        className="flex flex-col customGetStarted justify-center items-center w-full px-[4rem] font-[Inter]
+                        -translate-y-[26rem] py-[.rem] space-y-3
+                        sm:-translate-y-[35rem] sm:py-8 sm:space-y-5
+                        md:-translate-y-[50rem]
+                        lg:-translate-y-[55rem]"
+      >
         <p className="text-center text-base font-medium w-80 px-[.5rem] pt-5 pb-4 md:px-0">
           A photobooth that you can access anywhere, with frames tailored for
           your event.
@@ -116,5 +117,6 @@ export const EventCode = () => {
           </button>
         </Link>
       </div>
+    </div>
   );
 };
