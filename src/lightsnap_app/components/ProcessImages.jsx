@@ -55,7 +55,7 @@ const ProcessImages = ({
         <img
           src={src}
           alt="Merged Images"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
 
         {err && <p>{err}</p>}

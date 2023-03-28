@@ -17,6 +17,7 @@ export const AppDashboard = () => {
     width: 328,
     height: 446,
     facingMode: "user",
+    aspectRatio: 4 / 3,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -26,25 +27,38 @@ export const AppDashboard = () => {
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
 
-
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
     console.log("Captured");
-  },[cue]);
+  }, [cue]);
 
-  const handleModeChange = (imageMode, showcaseMode, width, height) => {
+  const handleModeChange = (
+    imageMode,
+    showcaseMode,
+    width,
+    height,
+    aspectRatio
+  ) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
-    setVideoConstraints({ ...videoConstraints, width, height });
+    setVideoConstraints({ ...videoConstraints, width, height, aspectRatio });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 446,328);
+    if (isMobile) {
+      handleModeChange(1, 1, 446, 328, 4 / 3);
+    } else {
+      handleModeChange(1, 1, 328, 446, 4 / 3);
+    }
   };
   const handleDuo = () => {
-    handleModeChange(2, 2, 328, 328);
+    handleModeChange(2, 2, 328, 328, 1 / 1);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 185, 328);
+    if (isMobile) {
+      handleModeChange(3, 3, 185, 328, 9 / 16);
+    } else {
+      handleModeChange(3, 3, 328, 185, 9 / 16);
+    }
   };
 
   const switchCamera = () => {
@@ -83,7 +97,6 @@ export const AppDashboard = () => {
     }, 2000);
     setShutterClick(true);
   };
-
 
   const framesInfo = () => {
     return FramesData.map((item, index) => {
@@ -128,6 +141,7 @@ export const AppDashboard = () => {
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
               className={`relative object-cover border border-black ${
+
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -143,7 +157,11 @@ export const AppDashboard = () => {
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
               />
-              <div className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${showcaseMode === 1 ? "hidden":"flex"}`}>
+              <div
+                className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${
+                  showcaseMode === 1 ? "hidden" : "flex"
+                }`}
+              >
                 {cue}
               </div>
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
