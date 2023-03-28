@@ -17,6 +17,7 @@ export const AppDashboard = () => {
     width: 328,
     height: 446,
     facingMode: "user",
+    aspectRatio: 0.75,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -31,19 +32,25 @@ export const AppDashboard = () => {
     console.log("Captured");
   }, [cue]);
 
-  const handleModeChange = (imageMode, showcaseMode, width, height) => {
+  const handleModeChange = (
+    imageMode,
+    showcaseMode,
+    width,
+    height,
+    aspectRatio
+  ) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
-    setVideoConstraints({ ...videoConstraints, width, height });
+    setVideoConstraints({ ...videoConstraints, width, height, aspectRatio });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 446, 328);
+    handleModeChange(1, 1, 446, 328, 0.75);
   };
   const handleDuo = () => {
-    handleModeChange(2, 2, 328, 328);
+    handleModeChange(2, 2, 328, 328, 1);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 185, 328);
+    handleModeChange(3, 3, 185, 328, 0.5625);
   };
 
   const switchCamera = () => {
@@ -136,7 +143,6 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
-                className="webcam-portrait"
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
