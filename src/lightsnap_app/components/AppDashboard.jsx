@@ -7,6 +7,7 @@ import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
+import { isMobile } from "react-device-detect";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -17,7 +18,7 @@ export const AppDashboard = () => {
     width: 328,
     height: 446,
     facingMode: "user",
-    aspectRatio: 3 / 4,
+    aspectRatio: 4 / 3,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -44,13 +45,21 @@ export const AppDashboard = () => {
     setVideoConstraints({ ...videoConstraints, width, height, aspectRatio });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 446, 328, 3 / 4);
+    if (isMobile) {
+      handleModeChange(1, 1, 446, 328, 4 / 3);
+    } else {
+      handleModeChange(1, 1, 328, 446, 4 / 3);
+    }
   };
   const handleDuo = () => {
     handleModeChange(2, 2, 328, 328, 1 / 1);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 185, 328, 9 / 16);
+    if (isMobile) {
+      handleModeChange(3, 3, 185, 328, 9 / 16);
+    } else {
+      handleModeChange(3, 3, 328, 185, 9 / 16);
+    }
   };
 
   const switchCamera = () => {
@@ -132,7 +141,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`object-cover border border-black overflow-hidden ${
+              className={`relative object-cover border border-black overflow-hidden ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
