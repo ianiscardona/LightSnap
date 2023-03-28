@@ -19,6 +19,7 @@ export const AppDashboard = () => {
     height: 446,
     facingMode: "user",
     aspectRatio: 4 / 3,
+    mirrored: true,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -38,11 +39,18 @@ export const AppDashboard = () => {
     showcaseMode,
     width,
     height,
-    aspectRatio
+    aspectRatio,
+    mirrored
   ) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
-    setVideoConstraints({ ...videoConstraints, width, height, aspectRatio });
+    setVideoConstraints({
+      ...videoConstraints,
+      width,
+      height,
+      aspectRatio,
+      mirrored,
+    });
   };
   const handleSolo = () => {
     if (isMobile) {
@@ -65,6 +73,7 @@ export const AppDashboard = () => {
   const switchCamera = () => {
     const newFacingMode =
       videoConstraints.facingMode === "user" ? "environment" : "user";
+    videoConstraints.mirrored === "user" ? "false" : "true";
     setVideoConstraints({ ...videoConstraints, facingMode: newFacingMode });
   };
 
