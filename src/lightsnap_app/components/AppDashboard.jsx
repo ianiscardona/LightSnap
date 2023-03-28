@@ -17,7 +17,7 @@ export const AppDashboard = () => {
     width: 328,
     height: 446,
     facingMode: "user",
-    aspectRatio: 3 / 4,
+    aspectRatio: 4 / 3,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -44,13 +44,13 @@ export const AppDashboard = () => {
     setVideoConstraints({ ...videoConstraints, width, height, aspectRatio });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 446, 328, 3 / 4);
+    handleModeChange(1, 1, 446, 328, 4 / 3);
   };
   const handleDuo = () => {
     handleModeChange(2, 2, 328, 328, 1 / 1);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 185, 328, 9 / 16);
+    handleModeChange(3, 3, 185, 328, 16 / 9);
   };
 
   const switchCamera = () => {
@@ -143,7 +143,6 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
-                style={{ transform: 'scaleX(-1)' }}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
