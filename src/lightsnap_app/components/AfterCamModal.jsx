@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { saveAs } from 'file-saver'
 
 export const AfterCamModal = ({isShow,output}) => {
     if(!isShow) return null
@@ -9,6 +10,48 @@ export const AfterCamModal = ({isShow,output}) => {
     const press = () => {
         setIsOpen(!isOpen);
         window.location.reload(true);
+    }
+    console.log(output)
+
+    const shareBtn = () => {
+        const imageExt = output.split(";")[0].split("/")[1];
+        const image = new File([output], `${Date.now()}.${imageExt}`, {type:`image/${imageExt}`} )
+         
+        if (navigator.share){
+             navigator.share({
+                 files: [image],
+                 text: 'some text'
+             })
+             .then(() => {
+                 console.log('Success')
+             })
+         }
+         else{
+             alert('Your browser does not support share functionality. Save the image instead.')
+         }
+         console.log(image)
+    }
+
+    
+
+    // const shareBtn = () => {
+    //     if (navigator.share){
+    //         navigator.share({
+    //             image: output,
+    //             text: 'some text'
+    //         })
+    //         .then(() => {
+    //             console.log('Success')
+    //         })
+    //         console.log(output);
+    //     }
+    //     else{
+    //         alert('Your browser does not support share functionality. Save the image instead.')
+    //     }
+    // }
+
+    const downloadImg= () => {
+        saveAs(output, 'LightSnap.jpg');
     }
 
   return (
@@ -31,13 +74,13 @@ export const AfterCamModal = ({isShow,output}) => {
                 <div className='absolute overflow-hidden -translate-y-[100%] sm:-translate-y-[105%] h-[200px] sm:h-[250px] bg-black flex items-center'> <img className='object-cover h-[100%]' src={output}/></div>
                 <h1 className=' font-medium pt-8 pb-3 text-4xl sm:text-5xl mt-14 text-black'>Nice!</h1>
                 <div className='flex flex-col pb-6 sm:pb-5 gap-y-3 sm:gap-y-5' >
-                    <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#1AE92F] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+                    <button onClick={shareBtn} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#1AE92F] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-bold text-base sm:text-xl">Share</h2>
                     </button>
                     <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-normal text-base sm:text-xl">Print</h2>
                     </button>
-                    <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+                    <button onClick={downloadImg} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-normal text-base sm:text-xl">Save</h2>
                     </button>
                 </div>
