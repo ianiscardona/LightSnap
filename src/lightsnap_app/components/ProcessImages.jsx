@@ -40,7 +40,10 @@ const ProcessImages = ({
         y: 0,
       },
     ])
-      .then((src) => setOutput(src))
+      .then((src) => {
+        setOutput(src);
+        setSrc(src);
+      })
       .catch((err) => setErr(err.toString()));
   }, [capturedImages, selectedFrame, showcaseMode]);
 

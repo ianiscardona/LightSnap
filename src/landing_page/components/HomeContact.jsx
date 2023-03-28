@@ -1,6 +1,24 @@
-import React from "react";
+import axios from "axios";
+import React, {useState} from "react";
 
 export const HomeContact = () => {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    axios.post("http://127.0.0.1:8000/api/users", {
+      name,
+      email
+    }).then((res) => console.log("Posting data", res)).catch((err) => console.log(err))
+    
+    axios.post("http://127.0.0.1:8000/api/message", {
+      message
+    }).then((res) => console.log("Posting data", res)).catch((err) => console.log(err))
+  }
+ 
   return (
     <div id="inquire" className="relative lg:pb-40 bg-[#232325]">
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 lg:mx-28 pt-20 lg:pt-40">
@@ -89,6 +107,8 @@ export const HomeContact = () => {
               type="text"
               placeholder="Name"
               className="outline-none w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
             <br />
@@ -98,6 +118,8 @@ export const HomeContact = () => {
               type="email"
               placeholder="Email @domain.com"
               className="outline-none w-full mb-4 h-10 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <br />
@@ -106,6 +128,8 @@ export const HomeContact = () => {
             <textarea
               placeholder="Type your message here..."
               className="outline-none message w-full mb-8 lg:mb-16 h-28 rounded-xl text-white bg-white/[0.34] text-xs placeholder:text-white placeholder:text-xs pl-3 lg:pl-6 pt-1 lg:pt-3"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               required
             ></textarea>
             <div className="text-center">
@@ -113,6 +137,7 @@ export const HomeContact = () => {
                 type="submit"
                 value="Send My Message"
                 className="text-sm lg:text-lg bg-[#D7282F] px-4 lg:px-8 py-1 lg:py-3 rounded-[40px] hover:cursor-pointer text-white hover:bg-white hover:text-[#D7282F] duration-300"
+                onClick={submitHandler}
               />
             </div>
           </form>

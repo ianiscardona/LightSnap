@@ -23,6 +23,15 @@ export const AppDashboard = () => {
   const [isCaptureFinished, setIsCaptureFinished] = useState(false);
   const [longpress, setLongPress] = useState(false);
   const [output, setOutput] = useState(null);
+  const [cue, setCue] = useState(0);
+  const [shutterClick, setShutterClick] = useState(false);
+
+
+  useEffect(() => {
+    // const audio = new Audio("../shutter-click.wav");
+    console.log("Captured");
+  },[cue]);
+
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
@@ -66,11 +75,16 @@ export const AppDashboard = () => {
         } else {
           clearInterval(intervalRef.current);
           setIsCaptureFinished(true);
+          setCue(0);
           return prevImages;
         }
       });
+      setCue((prevCue) => prevCue + 1);
     }, 2000);
+    setShutterClick(true);
   };
+
+
   const framesInfo = () => {
     return FramesData.map((item, index) => {
       let frame;
@@ -113,7 +127,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`object-cover border border-black overflow-hidden ${
+              className={`relative object-cover border border-black ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -129,6 +143,10 @@ export const AppDashboard = () => {
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
               />
+              <div className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${showcaseMode === 1 ? "hidden":"flex"}`}>
+                {cue}
+              </div>
+              {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
             </div>
           </div>
 
@@ -171,6 +189,7 @@ export const AppDashboard = () => {
               <MdFlipCameraAndroid className="w-11 h-11" />
             </button>
             <button
+              disabled={shutterClick}
               onClick={startCapture}
               className="w-[105px] h-[105px] col-start-2 row-start-1 row-span-full row-end-5 bg-[#D9D9D9] hover:bg-[#848484] focus:bg-[#848484] rounded-full transition-all"
             >
