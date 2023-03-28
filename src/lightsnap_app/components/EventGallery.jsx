@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { NavbarEvent } from "../../pages/navbar-event";
-import { Placeholder } from "./placeholder";
+import React,{useState} from 'react'
+import { NavbarEvent } from '../../pages/navbar-event'
+import { Placeholder } from './Placeholder';
 
 export const EventGallery = () => {
   const [submit, isSubmit] = useState(false);

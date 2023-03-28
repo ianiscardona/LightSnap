@@ -23,7 +23,6 @@ export const AppDashboard = () => {
   const [isCaptureFinished, setIsCaptureFinished] = useState(false);
   const [longpress, setLongPress] = useState(false);
   const [output, setOutput] = useState(null);
-
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
