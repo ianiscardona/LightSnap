@@ -40,7 +40,7 @@ export const AppDashboard = () => {
     width,
     height,
     aspectRatio,
-    mirrored
+    mirror
   ) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
@@ -49,7 +49,7 @@ export const AppDashboard = () => {
       width,
       height,
       aspectRatio,
-      mirrored,
+      mirror,
     });
   };
   const handleSolo = () => {
