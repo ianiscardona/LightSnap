@@ -155,6 +155,7 @@ export const AppDashboard = () => {
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
+                mirrored={true}
                 videoConstraints={videoConstraints}
               />
               <div
