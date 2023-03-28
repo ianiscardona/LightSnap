@@ -143,6 +143,7 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
+                style={{ transform: 'scaleX(-1)' }}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
