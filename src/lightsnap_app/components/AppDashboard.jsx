@@ -50,7 +50,7 @@ export const AppDashboard = () => {
     handleModeChange(2, 2, 328, 328, 1 / 1);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 185, 328, 16 / 9);
+    handleModeChange(3, 3, 185, 328, 9 / 16);
   };
 
   const switchCamera = () => {
