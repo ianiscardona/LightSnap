@@ -12,22 +12,44 @@ export const AfterCamModal = ({isShow,output}) => {
         setIsOpen(!isOpen);
         window.location.reload(true);
     }
+    console.log(output)
 
     const shareBtn = () => {
+        const imageExt = output.split(";")[0].split("/")[1];
+        const image = new File([output], `${Date.now()}.${imageExt}`, {type:`image/${imageExt}`} )
+         
         if (navigator.share){
-            navigator.share({
-                image: output,
-                text: 'some text'
-            })
-            .then(() => {
-                console.log('Success')
-            })
-            console.log(output);
-        }
-        else{
-            alert('Your browser does not support share functionality. Save the image instead.')
-        }
+             navigator.share({
+                 files: [image],
+                 text: 'some text'
+             })
+             .then(() => {
+                 console.log('Success')
+             })
+         }
+         else{
+             alert('Your browser does not support share functionality. Save the image instead.')
+         }
+         console.log(image)
     }
+
+    
+
+    // const shareBtn = () => {
+    //     if (navigator.share){
+    //         navigator.share({
+    //             image: output,
+    //             text: 'some text'
+    //         })
+    //         .then(() => {
+    //             console.log('Success')
+    //         })
+    //         console.log(output);
+    //     }
+    //     else{
+    //         alert('Your browser does not support share functionality. Save the image instead.')
+    //     }
+    // }
 
     const downloadImg= () => {
         saveAs(output, 'LightSnap.jpg');
