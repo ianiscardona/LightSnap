@@ -26,11 +26,10 @@ export const AppDashboard = () => {
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
 
-
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
     console.log("Captured");
-  },[cue]);
+  }, [cue]);
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
@@ -38,13 +37,13 @@ export const AppDashboard = () => {
     setVideoConstraints({ ...videoConstraints, width, height });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 328, 446);
+    handleModeChange(1, 1, 446, 328);
   };
   const handleDuo = () => {
     handleModeChange(2, 2, 328, 328);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 328, 185);
+    handleModeChange(3, 3, 185, 328);
   };
 
   const switchCamera = () => {
@@ -83,7 +82,6 @@ export const AppDashboard = () => {
     }, 2000);
     setShutterClick(true);
   };
-
 
   const framesInfo = () => {
     return FramesData.map((item, index) => {
@@ -127,7 +125,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`portrait:relative object-cover border border-black ${
+              className={`object-cover border border-black overflow-hidden ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -138,12 +136,17 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
+                className="webcam-portrait"
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
               />
-              <div className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${showcaseMode === 1 ? "hidden":"flex"}`}>
+              <div
+                className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${
+                  showcaseMode === 1 ? "hidden" : "flex"
+                }`}
+              >
                 {cue}
               </div>
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
