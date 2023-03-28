@@ -116,6 +116,5 @@ export const EventCode = () => {
           </button>
         </Link>
       </div>
-    </div>
   );
 };
