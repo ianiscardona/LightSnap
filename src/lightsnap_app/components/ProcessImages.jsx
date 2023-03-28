@@ -47,6 +47,8 @@ const ProcessImages = ({
       .catch((err) => setErr(err.toString()));
   }, [capturedImages, selectedFrame, showcaseMode]);
 
+  console.log(src);
+
   return (
     <>
       <div className="object-cover border border-black w-fit h-fit">

@@ -13,15 +13,19 @@ export const AfterCamModal = ({isShow,output}) => {
     }
     console.log(output)
 
-    const shareBtn = () => {
+    const shareBtn = async() => {
+        const blob = await (await fetch(output)).blob();
+        const file = new File([blob], 'LightSnap.png', { type: blob.type });
+        
         const imageExt = output.split(";")[0].split("/")[1];
         const image = new File([output], `${Date.now()}.${imageExt}`, {type:`image/${imageExt}`} )
          
         if (navigator.share){
-             navigator.share({
-                 files: [image],
-                 text: 'some text'
-             })
+            navigator.share({
+                title: 'Hello',
+                text: 'Check out this image!',
+                files: [file],
+                })
              .then(() => {
                  console.log('Success')
              })
@@ -32,23 +36,9 @@ export const AfterCamModal = ({isShow,output}) => {
          console.log(image)
     }
 
-    
-
-    // const shareBtn = () => {
-    //     if (navigator.share){
-    //         navigator.share({
-    //             image: output,
-    //             text: 'some text'
-    //         })
-    //         .then(() => {
-    //             console.log('Success')
-    //         })
-    //         console.log(output);
-    //     }
-    //     else{
-    //         alert('Your browser does not support share functionality. Save the image instead.')
-    //     }
-    // }
+    const printBtn = () => {
+        window.print()
+    }
 
     const downloadImg= () => {
         saveAs(output, 'LightSnap.jpg');
@@ -77,7 +67,7 @@ export const AfterCamModal = ({isShow,output}) => {
                     <button onClick={shareBtn} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#1AE92F] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-bold text-base sm:text-xl">Share</h2>
                     </button>
-                    <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+                    <button onClick={printBtn} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-normal text-base sm:text-xl">Print</h2>
                     </button>
                     <button onClick={downloadImg} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
