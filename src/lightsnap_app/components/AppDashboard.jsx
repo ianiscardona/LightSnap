@@ -27,7 +27,7 @@ export const AppDashboard = () => {
   const [output, setOutput] = useState(null);
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
-  cosnt[(isMirrored, setIsMirrored)] = useState(true);
+  const [isMirrored, setIsMirrored] = useState(true);
 
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
@@ -163,11 +163,10 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
-                isMirrored={isMirrored}
+                mirrored={isMirrored}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                mirrored={true}
                 videoConstraints={videoConstraints}
               />
               <div
