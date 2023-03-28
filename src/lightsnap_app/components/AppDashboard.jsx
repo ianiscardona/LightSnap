@@ -19,7 +19,6 @@ export const AppDashboard = () => {
     height: 446,
     facingMode: "user",
     aspectRatio: 4 / 3,
-    mirror: true,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -28,6 +27,7 @@ export const AppDashboard = () => {
   const [output, setOutput] = useState(null);
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
+  cosnt[(isMirrored, setIsMirrored)] = useState(true);
 
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
@@ -39,8 +39,7 @@ export const AppDashboard = () => {
     showcaseMode,
     width,
     height,
-    aspectRatio,
-    mirror
+    aspectRatio
   ) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
@@ -49,7 +48,6 @@ export const AppDashboard = () => {
       width,
       height,
       aspectRatio,
-      mirror,
     });
   };
   const handleSolo = () => {
@@ -77,8 +75,8 @@ export const AppDashboard = () => {
     setVideoConstraints({
       ...videoConstraints,
       facingMode: newFacingMode,
-      mirror: newMirror,
     });
+    setIsMirrored(newMirror);
   };
 
   const startCapture = () => {
@@ -165,6 +163,7 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
+                isMirrored={isMirrored}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
