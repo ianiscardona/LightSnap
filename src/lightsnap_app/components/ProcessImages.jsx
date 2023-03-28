@@ -51,7 +51,7 @@ const ProcessImages = ({
 
   return (
     <>
-      <div className="object-cover border border-black w-fit h-fit">
+      {/* <div className="object-cover border border-black w-fit h-fit">
         <img
           src={src}
           alt="Merged Images"
@@ -59,7 +59,7 @@ const ProcessImages = ({
         />
 
         {err && <p>{err}</p>}
-      </div>
+      </div> */}
     </>
   );
 };
