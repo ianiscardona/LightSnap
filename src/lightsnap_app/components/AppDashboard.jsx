@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
 import { isMobile } from "react-device-detect";
+import Timer from "./Timer";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -28,6 +29,7 @@ export const AppDashboard = () => {
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
   const [isMirrored, setIsMirrored] = useState(true);
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
@@ -93,20 +95,25 @@ export const AppDashboard = () => {
     }
     intervalRef.current = setInterval(() => {
       setCapturedImages((prevImages) => {
+        if(prevImages.length === showcaseMode-1){
+          setCountdown(null);
+        }
         if (prevImages.length < showcaseMode) {
           return [
             ...prevImages,
             webcamRef.current.getScreenshot({ width, height }),
           ];
-        } else {
+        } 
+        else {
           clearInterval(intervalRef.current);
           setIsCaptureFinished(true);
           setCue(0);
+          setCountdown(null);
           return prevImages;
         }
       });
       setCue((prevCue) => prevCue + 1);
-    }, 2000);
+    }, 3000);
     setShutterClick(true);
   };
 
@@ -176,6 +183,7 @@ export const AppDashboard = () => {
               >
                 {cue}
               </div>
+              {shutterClick ? <Timer seconds={countdown} className="text-white absolute top-0" />:null}
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
             </div>
           </div>
