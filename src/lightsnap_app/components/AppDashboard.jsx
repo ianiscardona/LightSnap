@@ -95,7 +95,7 @@ export const AppDashboard = () => {
     }
     intervalRef.current = setInterval(() => {
       setCapturedImages((prevImages) => {
-        if(prevImages.length === showcaseMode-1){
+        if (prevImages.length === showcaseMode - 1) {
           setCountdown(null);
         }
         if (prevImages.length < showcaseMode) {
@@ -103,8 +103,7 @@ export const AppDashboard = () => {
             ...prevImages,
             webcamRef.current.getScreenshot({ width, height }),
           ];
-        } 
-        else {
+        } else {
           clearInterval(intervalRef.current);
           setIsCaptureFinished(true);
           setCue(0);
@@ -151,7 +150,7 @@ export const AppDashboard = () => {
   const selectedFrame = framesInfo().find(
     (frame) => frame.id === activeId
   )?.frame;
-  console.log(output);
+  // console.log(output);
   return (
     <>
       <FramePreview frame={selectedFrame} isPreview={longpress} />
@@ -159,7 +158,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`relative object-cover border border-black ${
+              className={`relative flex items-center justify-center object-cover border border-black ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -183,7 +182,16 @@ export const AppDashboard = () => {
               >
                 {cue}
               </div>
-              {shutterClick ? <Timer seconds={countdown} className="text-white absolute top-0" />:null}
+              <div className="absolute  flex items-center justify-center z-50 text-white font-bold text-9xl opacity-20">
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div>
+              {/* <div
+                className={`absolute ${
+                  shutterClick ? null : "hidden"
+                } flex items-center justify-center z-50 text-white font-bold text-9xl opacity-20`}
+              >
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div> */}
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
             </div>
           </div>
