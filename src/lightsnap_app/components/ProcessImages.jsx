@@ -18,7 +18,7 @@ const ProcessImages = ({
       images = capturedImages.map((image, index) => ({
         src: image,
         x: 68,
-        y: index === 0 ? 1485 : 60,
+        y: index === 0 ? 60 : 1485,
       }));
     } else if (showcaseMode === 3) {
       images = capturedImages.map((image, index) => ({

@@ -15,8 +15,8 @@ export const AppDashboard = () => {
   const [activeId, setActiveId] = useState(1);
   const [capturedImages, setCapturedImages] = useState([]);
   const [videoConstraints, setVideoConstraints] = useState({
-    width: 328,
-    height: 446,
+    width: isMobile ? 446 : 328,
+    height: isMobile ? 328 : 446,
     facingMode: "user",
     aspectRatio: 4 / 3,
   });
@@ -107,6 +107,7 @@ export const AppDashboard = () => {
       });
       setCue((prevCue) => prevCue + 1);
     }, 2000);
+
     setShutterClick(true);
   };
 
@@ -168,6 +169,7 @@ export const AppDashboard = () => {
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
+                screenshotQuality={1}
               />
               <div
                 className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${
