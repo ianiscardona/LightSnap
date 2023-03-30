@@ -19,43 +19,63 @@ html {
 /*For max-width of 360px*/
 @media all and (max-width: 360px) {
   .customGetStarted {
-    scale:85%;
+    scale: 85%;
     max-height: 90vh;
   }
   .customWalkthrough {
-    scale:85%;
+    scale: 85%;
   }
   .customEvent {
     font-size: 36px;
   }
-  .customInstruction{
+  .customInstruction {
     font-size: 16px;
   }
-  .customGalleryScale{
+  .customGalleryScale {
     scale: 70%;
   }
-  .customMarginBottom{
+  .customMarginBottom {
     margin-bottom: 0;
   }
-  .customGalleryFont{
+  .customGalleryFont {
     font-size: 36px;
+  }
+}
+@media all and (width: 430px) {
+  .customIconMargin {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
+
+@media all and (max-width: 429px) {
+  .customIconMargin {
+    margin-left: 1.3rem;
+    margin-right: 1.3rem;
+  }
+}
+
+@media all and (width: 375px) {
+  .customIconMargin {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
 
 /*Specifically for Galaxy Fold*/
 @media all and (max-width: 280px) {
   .customWalkthrough {
-    scale:75%;
+    scale: 75%;
   }
 }
 
 /*Specifically for Iphone 4*/
 @media all and (width: 320px) and (height: 480px) {
   .customGetStarted {
-    scale:80%;
+    scale: 80%;
     max-height: 90vh;
   }
   .customWalkthrough {
-    scale:75%;
+    scale: 75%;
   }
 }

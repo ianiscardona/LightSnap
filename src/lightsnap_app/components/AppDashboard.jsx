@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect} from "react";
-import { MdFlipCameraAndroid,MdImage } from "react-icons/md";
+import React, { useState, useRef, useEffect } from "react";
+import { MdFlipCameraAndroid, MdImage } from "react-icons/md";
 import { FramesData } from "../data/frames_data";
 import { Frames } from "./Frames";
 import ProcessImages from "../components/ProcessImages";
@@ -7,6 +7,7 @@ import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -26,11 +27,10 @@ export const AppDashboard = () => {
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
 
-
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
     console.log("Captured");
-  },[cue]);
+  }, [cue]);
 
   const handleModeChange = (imageMode, showcaseMode, width, height) => {
     setImageMode(imageMode);
@@ -84,7 +84,6 @@ export const AppDashboard = () => {
     setShutterClick(true);
   };
 
-
   const framesInfo = () => {
     return FramesData.map((item, index) => {
       let frame;
@@ -119,12 +118,18 @@ export const AppDashboard = () => {
     (frame) => frame.id === activeId
   )?.frame;
   console.log(output);
+
+  const slideLeft = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft - 77;
+  };
+  const slideRight = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft + 77;
+  };
   return (
     <>
-      <FramePreview 
-        frame={selectedFrame}
-        isPreview={longpress}
-      />
+      <FramePreview frame={selectedFrame} isPreview={longpress} />
       <div className="relative w-full h-screen">
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
@@ -145,7 +150,11 @@ export const AppDashboard = () => {
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
               />
-              <div className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${showcaseMode === 1 ? "hidden":"flex"}`}>
+              <div
+                className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${
+                  showcaseMode === 1 ? "hidden" : "flex"
+                }`}
+              >
                 {cue}
               </div>
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
@@ -178,10 +187,26 @@ export const AppDashboard = () => {
               <h2 className="text-base font-medium">Trio</h2>
             </button>
           </div>
-          <div className="px-[35px] w-full flex flex-nowrap overflow-x-auto snap-x mb-3 scroll-pl-[35px]">
-            <div className="flex space-x-4">
-              {framesInfo().map((frame) => frame.frames)}
+          <div className="flex w-full items-center justify-center">
+            <button onClick={slideLeft} className="mb-3 mr-2">
+              <RiArrowLeftSLine className="w-10 h-20 text-[#33363F]" />
+            </button>
+            {/* <div className="px-[35px] sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 scroll-pl-[35px] custom-frames transition-all">
+              <div className="flex space-x-4  min-h-fit">
+                {framesInfo().map((frame) => frame.frames)}
+              </div>
+            </div> */}
+            <div
+              id="slider"
+              className="sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 transition-all scroll-smooth"
+            >
+              <div className="flex min-h-fit">
+                {framesInfo().map((frame) => frame.frames)}
+              </div>
             </div>
+            <button onClick={slideRight} className="mb-3 ml-2">
+              <RiArrowRightSLine className="w-10 h-20 text-[#33363F]" />
+            </button>
           </div>
           <div className="relative grid grid-cols-3 grid-rows-4">
             <button
@@ -199,24 +224,24 @@ export const AppDashboard = () => {
                 <circle cx="12" cy="12" r="8" fill="black" />
               </svg>
             </button>
-              <button className='mr-4 col-start-3 row-start-2 justify-self-end row-span-2 max-w-fit max-h-fit'>
+            <button className="mr-4 col-start-3 row-start-2 justify-self-end row-span-2 max-w-fit max-h-fit">
               <Link to="/eventgallery">
-                  <MdImage className="w-11 h-11" />
+                <MdImage className="w-11 h-11" />
               </Link>
-              </button>
+            </button>
           </div>
         </div>
       </div>
       <div className="container mx-auto">
         {isCaptureFinished && (
           <>
-          <ProcessImages
-            capturedImages={capturedImages}
-            showcaseMode={showcaseMode}
-            selectedFrame={`/images/frames/${selectedFrame}`}
-            setOutput={setOutput}
-          />
-          <AfterCamModal isShow={isCaptureFinished} output={output} />
+            <ProcessImages
+              capturedImages={capturedImages}
+              showcaseMode={showcaseMode}
+              selectedFrame={`/images/frames/${selectedFrame}`}
+              setOutput={setOutput}
+            />
+            <AfterCamModal isShow={isCaptureFinished} output={output} />
           </>
         )}
       </div>
