@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { saveAs } from 'file-saver'
+import {Document, Image, Page, PDFDownloadLink, StyleSheet} from "@react-pdf/renderer";
 
 export const AfterCamModal = ({isShow,output}) => {
     if(!isShow) return null
@@ -17,8 +18,8 @@ export const AfterCamModal = ({isShow,output}) => {
         const blob = await (await fetch(output)).blob();
         const file = new File([blob], 'LightSnap.png', { type: blob.type });
         
-        const imageExt = output.split(";")[0].split("/")[1];
-        const image = new File([output], `${Date.now()}.${imageExt}`, {type:`image/${imageExt}`} )
+        // const imageExt = output.split(";")[0].split("/")[1];
+        // const image = new File([output], `${Date.now()}.${imageExt}`, {type:`image/${imageExt}`} )
          
         if (navigator.share){
             navigator.share({
@@ -36,13 +37,22 @@ export const AfterCamModal = ({isShow,output}) => {
          console.log(image)
     }
 
-    const printBtn = () => {
-        window.print()
-    }
+    // const printBtn = () => {
+    //     window.print()
+    // }
 
     const downloadImg= () => {
         saveAs(output, 'LightSnap.jpg');
     }
+
+    const PDFFile = () => (
+      <Document>
+        <Page>
+        <Image src={output} />
+        </Page>
+      </Document>
+    )
+  
 
   return (
     <div className={`${isOpen ? "block":"hidden"} fixed inset-0 bg-opacity-25 bg-[#5E5A5A] backdrop-blur flex justify-center items-center px-3`}>
@@ -67,9 +77,11 @@ export const AfterCamModal = ({isShow,output}) => {
                     <button onClick={shareBtn} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#1AE92F] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-bold text-base sm:text-xl">Share</h2>
                     </button>
-                    <button onClick={printBtn} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
-                        <h2 className="font-normal text-base sm:text-xl">Print</h2>
-                    </button>
+                    <PDFDownloadLink document={<PDFFile/>} fileName="LightSnapp">
+                      <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+                          <h2 className="font-normal text-base sm:text-xl">Print</h2>
+                      </button>
+                    </PDFDownloadLink>
                     <button onClick={downloadImg} className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
                         <h2 className="font-normal text-base sm:text-xl">Save</h2>
                     </button>

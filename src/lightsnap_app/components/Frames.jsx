@@ -6,8 +6,6 @@ export const Frames = (props) => {
   //   props.setLongPress(!props.longPress);
   // };
 
-  console.log(props.longPress);
-
   return (
     <button
       onContextMenu={(e) => e.preventDefault()}
