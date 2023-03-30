@@ -7,6 +7,15 @@ html {
   scroll-behavior: smooth;
 }
 
+.removeHighlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.removeTouch {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -43,22 +52,29 @@ html {
 }
 @media all and (width: 430px) {
   .customIconMargin {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
   }
 }
 
 @media all and (max-width: 429px) {
   .customIconMargin {
-    margin-left: 1.3rem;
-    margin-right: 1.3rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
 }
 
 @media all and (width: 375px) {
   .customIconMargin {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: 0.85rem;
+    margin-right: 0.85rem;
+  }
+}
+
+@media all and (width: 360px) {
+  .customIconMargin {
+    margin-left: 0.85rem;
+    margin-right: 0.85rem;
   }
 }
 
