@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
 import { isMobile } from "react-device-detect";
+import Timer from "./Timer";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -28,6 +29,7 @@ export const AppDashboard = () => {
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
   const [isMirrored, setIsMirrored] = useState(true);
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
@@ -93,6 +95,9 @@ export const AppDashboard = () => {
     }
     intervalRef.current = setInterval(() => {
       setCapturedImages((prevImages) => {
+        if (prevImages.length === showcaseMode - 1) {
+          setCountdown(null);
+        }
         if (prevImages.length < showcaseMode) {
           return [
             ...prevImages,
@@ -102,11 +107,12 @@ export const AppDashboard = () => {
           clearInterval(intervalRef.current);
           setIsCaptureFinished(true);
           setCue(0);
+          setCountdown(null);
           return prevImages;
         }
       });
       setCue((prevCue) => prevCue + 1);
-    }, 2000);
+    }, 3000);
     setShutterClick(true);
   };
 
@@ -144,7 +150,7 @@ export const AppDashboard = () => {
   const selectedFrame = framesInfo().find(
     (frame) => frame.id === activeId
   )?.frame;
-  console.log(output);
+  // console.log(output);
   return (
     <>
       <FramePreview frame={selectedFrame} isPreview={longpress} />
@@ -152,7 +158,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`relative object-cover border border-black ${
+              className={`relative flex items-center justify-center object-cover border border-black ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -176,6 +182,16 @@ export const AppDashboard = () => {
               >
                 {cue}
               </div>
+              <div className="absolute  flex items-center justify-center z-50 text-white font-bold text-9xl opacity-20">
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div>
+              {/* <div
+                className={`absolute ${
+                  shutterClick ? null : "hidden"
+                } flex items-center justify-center z-50 text-white font-bold text-9xl opacity-20`}
+              >
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div> */}
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
             </div>
           </div>
