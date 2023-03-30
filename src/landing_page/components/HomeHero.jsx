@@ -10,7 +10,7 @@ export const HomeHero = () => {
         <div className="relative mx-14 flex flex-col items-center justify-between min-h-[70vh]">
           <div className="flex flex-row items-center space-x-1 mt-24 md:mt-24 md:mb-7">
             <img
-              src="/public/images/ls-lens-red.png"
+              src="../images/ls-lens-red.png"
               className="h-16 md:h-20"
             />
             <div className="font-['Galada'] text-2xl text-white md:text-3xl">
