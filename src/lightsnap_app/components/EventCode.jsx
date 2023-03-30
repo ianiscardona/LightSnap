@@ -26,7 +26,7 @@ import { Link } from "react-router-dom";
 export const EventCode = () => {
   const [code, isCode] = useState("");
   let auth = false;
-  const pass = "123";
+  const pass = "bday";
   if (code === pass) {
     auth = true;
   } else {
