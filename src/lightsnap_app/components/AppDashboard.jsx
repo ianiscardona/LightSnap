@@ -29,6 +29,7 @@ export const AppDashboard = () => {
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
   const [isMirrored, setIsMirrored] = useState(true);
+
   const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
@@ -169,11 +170,12 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
+                mirrored={isMirrored}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                mirrored={isMirrored}
                 videoConstraints={videoConstraints}
+                screenshotQuality={1}
               />
               <div
                 className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${
