@@ -1,6 +1,6 @@
 import React from "react";
 import { Home } from "./pages/home";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { EventCode } from "./lightsnap_app/components/EventCode";
 import { EventCodeError } from "./lightsnap_app/components/EventCodeError";
 import { GetStartedCard } from "./lightsnap_app/components/GetStartedCard";
@@ -14,8 +14,6 @@ import { AuthProvider } from "./context/AuthContext";
 function App() {
   return (
     <>
-
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/eventgallery" element={<EventGallery />} />
