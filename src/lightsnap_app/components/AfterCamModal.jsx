@@ -17,10 +17,8 @@ export const AfterCamModal = ({ isShow, output }) => {
   const press = () => {
     setIsOpen(!isOpen);
     console.log("Before reload:", window.location.href);
-    debugger;
     window.location.reload(true);
     console.log("After reload:", window.location.href);
-    debugger;
   };
 
   console.log(output);

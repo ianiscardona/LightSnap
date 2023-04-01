@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { setCookie } from "nookies";
 
 //import axios from 'axios'
 //import React,{useContext, useState} from 'react'
@@ -25,29 +24,14 @@ import { setCookie } from "nookies";
       } */
 
 export const EventCode = () => {
-  // const [code, isCode] = useState("");
-  // let auth = false;
-  // const pass = "123";
-  // if (code === pass) {
-  //   auth = true;
-  // } else {
-  //   auth = false;
-  // }
-  const [code, setCode] = useState("");
+  const [code, isCode] = useState("");
+  let auth = false;
   const pass = "bday";
-
-  const handleCodeSubmit = (e) => {
-    e.preventDefault();
-    if (code === pass) {
-      setCookie(null, "isAuthenticated", "true", {
-        maxAge: 30 * 24 * 60 * 60,
-        path: "/",
-      });
-      window.location.href = "/getstarted";
-    } else {
-      window.location.href = "/eventcodeerror";
-    }
-  };
+  if (code === pass) {
+    auth = true;
+  } else {
+    auth = false;
+  }
 
   return (
     <div className="flex flex-col relative items-center w-full h-screen overflow-hidden mx-auto">
@@ -100,24 +84,8 @@ export const EventCode = () => {
           A photobooth that you can access anywhere, with frames tailored for
           your event.
         </p>
-        <form
-          onSubmit={handleCodeSubmit}
-          className="flex flex-col justify-center text-center items-center gap-y-2"
-        >
-          <input
-            onChange={(e) => setCode(e.target.value)}
-            type="text"
-            placeholder="Enter Event Code"
-            className="border-[1px] border-[#000000] text-[#000000] text-center rounded-xl w-80 h-12 sm:w-96 sm:h-16"
-          />
-          <button
-            type="submit"
-            className="flex items-center justify-center text-center rounded-full w-28 h-10 sm:w-52 sm:h-16 text-white bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"
-          >
-            Enter
-          </button>
-        </form>
-        {/* <form className="flex flex-col justify-center text-center items-center gap-y-2">
+
+        <form className="flex flex-col justify-center text-center items-center gap-y-2">
           <input
             onChange={(e) => isCode(e.target.value)}
             type="text"
@@ -141,7 +109,7 @@ export const EventCode = () => {
               />
             </Link>
           )}
-        </form> */}
+        </form>
 
         <Link to="/contact">
           <button className=" underline text-[#1C0EB7] font-medium text-sm sm:text-xl ">
