@@ -11,6 +11,7 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { isMobile } from "react-device-detect";
 import { parseCookies } from "nookies";
 import Timer from "./Timer";
+import { parseCookies } from "nookies";
 
 export const AppDashboard = () => {
   const { isAuthenticated } = parseCookies();
@@ -196,7 +197,7 @@ export const AppDashboard = () => {
               >
                 {cue}
               </div>
-              <div className="absolute  flex items-center justify-center z-50 text-white font-bold text-9xl opacity-20">
+              <div className="absolute  flex items-center justify-center z-50 text-white font-bold text-9xl opacity-40">
                 {shutterClick ? <Timer seconds={countdown} /> : null}
               </div>
               {/* <div
@@ -242,9 +243,9 @@ export const AppDashboard = () => {
             </button>
             <div
               id="slider"
-              className="sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 transition-all scroll-smooth"
+              className="sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 transition-all scroll-smooth ease-in-out"
             >
-              <div className="flex min-h-fit">
+              <div className="mx-2 snap-x snap-mandatory flex min-h-fit smlr:max-ipse:space-x-8 ipse:max-ip14:space-x-14 ip14:max-meds:space-x-20">
                 {framesInfo().map((frame) => frame.frames)}
               </div>
             </div>

@@ -25,6 +25,7 @@ import { setCookie } from "nookies";
       } */
 
 export const EventCode = () => {
+
 //   const [code, isCode] = useState("");
 //   let auth = false;
 //   const pass = "bday";
@@ -117,7 +118,6 @@ export const EventCode = () => {
             Enter
           </button>
         </form>
-
 //         <form className="flex flex-col justify-center text-center items-center gap-y-2">
 //           <input
 //             onChange={(e) => isCode(e.target.value)}
