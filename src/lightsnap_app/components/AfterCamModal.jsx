@@ -10,7 +10,7 @@ export const AfterCamModal = ({isShow,output}) => {
     const [isOpen, setIsOpen] = useState(true);
     const press = () => {
         setIsOpen(!isOpen);
-        window.location.reload(false);
+        window.location.reload();
     }
     console.log(output)
 
