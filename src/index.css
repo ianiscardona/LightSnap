@@ -52,24 +52,32 @@ html {
 }
 @media all and (width: 430px) {
   .customIconMargin {
+    /* margin-left: 1.8rem;
+     margin-right: 1.8rem; */
     justify-content: space-between;
   }
 }
 
 @media all and (max-width: 429px) {
   .customIconMargin {
+    /* margin-left: 1.5rem;
+      margin-right: 1.5rem;*/
     justify-content: space-between;
   }
 }
 
 @media all and (width: 375px) {
   .customIconMargin {
+    /* margin-left: 0.85rem;
+    margin-right: 0.85rem;*/
     justify-content: space-between;
   }
 }
 
 @media all and (width: 360px) {
   .customIconMargin {
+    /* margin-left: 0.85rem;
+     margin-right: 0.85rem;*/
     justify-content: space-between;
   }
 }

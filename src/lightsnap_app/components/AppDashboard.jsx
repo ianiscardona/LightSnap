@@ -9,7 +9,6 @@ import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { isMobile } from "react-device-detect";
-import { parseCookies } from "nookies";
 import Timer from "./Timer";
 
 export const AppDashboard = () => {
@@ -239,7 +238,7 @@ export const AppDashboard = () => {
               id="slider"
               className="sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 transition-all scroll-smooth ease-in-out"
             >
-              <div className="mx-2 snap-x snap-mandatory flex min-h-fit smlr:max-ipse:space-x-8 ipse:max-ip14:space-x-14 ip14:max-meds:space-x-20">
+              <div className="mx-2 snap-x snap-mandatory flex min-h-fit smlr:max-ipse:space-x-8 ipse:max-ip14:space-x-14 ip14:max-meds:space-x-20 transition-all scroll-smooth ease-in-out">
                 {framesInfo().map((frame) => frame.frames)}
               </div>
             </div>
