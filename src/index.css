@@ -50,21 +50,27 @@ html {
     font-size: 36px;
   }
 }
-/*For max-width of 400px*/
-@media all and (max-width: 400px) {
-  .custom-camera {
-    scale: 75%;
-    margin-top: 30px;
+@media all and (width: 430px) {
+  .customIconMargin {
+    justify-content: space-between;
   }
-  .custom-frames {
-    scroll-padding-left: 35px;
+}
+
+@media all and (max-width: 429px) {
+  .customIconMargin {
+    justify-content: space-between;
   }
-  .custom-buttons {
-    scale: 90%;
-    margin-bottom: 15px;
+}
+
+@media all and (width: 375px) {
+  .customIconMargin {
+    justify-content: space-between;
   }
-  .custom-frame-size {
-    scale: 90%;
+}
+
+@media all and (width: 360px) {
+  .customIconMargin {
+    justify-content: space-between;
   }
 }
 

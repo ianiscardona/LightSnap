@@ -7,9 +7,17 @@ import Webcam from "react-webcam";
 import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { isMobile } from "react-device-detect";
+import Timer from "./Timer";
+import { parseCookies } from "nookies";
 
 export const AppDashboard = () => {
+  const { isAuthenticated } = parseCookies();
+  if (isAuthenticated !== "true") {
+    window.location.href = "/eventcode";
+    return null;
+  }
   const [imageMode, setImageMode] = useState(1);
   const [showcaseMode, setShowcaseMode] = useState(1);
   const [activeId, setActiveId] = useState(1);
@@ -28,7 +36,7 @@ export const AppDashboard = () => {
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
   const [isMirrored, setIsMirrored] = useState(true);
-
+  const [countdown, setCountdown] = useState(3);
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
     console.log("Captured");
@@ -93,6 +101,9 @@ export const AppDashboard = () => {
     }
     intervalRef.current = setInterval(() => {
       setCapturedImages((prevImages) => {
+        if (prevImages.length === showcaseMode - 1) {
+          setCountdown(null);
+        }
         if (prevImages.length < showcaseMode) {
           return [
             ...prevImages,
@@ -102,12 +113,12 @@ export const AppDashboard = () => {
           clearInterval(intervalRef.current);
           setIsCaptureFinished(true);
           setCue(0);
+          setCountdown(null);
           return prevImages;
         }
       });
       setCue((prevCue) => prevCue + 1);
-    }, 2000);
-
+    }, 3000);
     setShutterClick(true);
   };
 
@@ -145,7 +156,14 @@ export const AppDashboard = () => {
   const selectedFrame = framesInfo().find(
     (frame) => frame.id === activeId
   )?.frame;
-  console.log(output);
+  const slideLeft = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft - 77;
+  };
+  const slideRight = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft + 77;
+  };
   return (
     <>
       <FramePreview frame={selectedFrame} isPreview={longpress} />
@@ -153,7 +171,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`relative object-cover border border-black ${
+              className={`relative flex items-center justify-center object-cover border border-black ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -178,6 +196,16 @@ export const AppDashboard = () => {
               >
                 {cue}
               </div>
+              <div className="absolute  flex items-center justify-center z-50 text-white font-bold text-9xl opacity-40">
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div>
+              {/* <div
+                className={`absolute ${
+                  shutterClick ? null : "hidden"
+                } flex items-center justify-center z-50 text-white font-bold text-9xl opacity-20`}
+              >
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div> */}
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
             </div>
           </div>
@@ -208,10 +236,21 @@ export const AppDashboard = () => {
               <h2 className="text-base font-medium">Trio</h2>
             </button>
           </div>
-          <div className="px-[35px] sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 scroll-pl-[35px] custom-frames transition-all">
-            <div className="flex space-x-4  min-h-fit">
-              {framesInfo().map((frame) => frame.frames)}
+          <div className="flex w-full items-center justify-center">
+            <button onClick={slideLeft} className="mb-3 mr-2">
+              <RiArrowLeftSLine className="w-10 h-20 text-[#33363F]" />
+            </button>
+            <div
+              id="slider"
+              className="sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 transition-all scroll-smooth ease-in-out"
+            >
+              <div className="mx-2 snap-x snap-mandatory flex min-h-fit smlr:max-ipse:space-x-8 ipse:max-ip14:space-x-14 ip14:max-meds:space-x-20">
+                {framesInfo().map((frame) => frame.frames)}
+              </div>
             </div>
+            <button onClick={slideRight} className="mb-3 ml-2">
+              <RiArrowRightSLine className="w-10 h-20 text-[#33363F]" />
+            </button>
           </div>
           <div className="relative grid grid-cols-3 grid-rows-4 custom-buttons">
             <button
