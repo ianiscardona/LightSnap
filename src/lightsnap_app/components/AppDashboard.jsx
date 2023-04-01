@@ -9,6 +9,7 @@ import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { isMobile } from "react-device-detect";
+import { parseCookies } from "nookies";
 import Timer from "./Timer";
 import { parseCookies } from "nookies";
 

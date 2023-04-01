@@ -9,8 +9,21 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 
-export const AfterCamModal = ({ isShow, output }) => {
-  if (!isShow) return null;
+
+export const AfterCamModal = ({isShow,output}) => {
+    if(!isShow) return null
+  
+    const [modalOpen, setModalOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(true);
+    const press = () => {
+        setIsOpen(!isOpen);
+        console.log("Before reload:", window.location.href);
+        debugger;
+        window.location.reload(true);
+        console.log("After reload:", window.location.href);
+        debugger;
+    }
+    console.log(output)
 
   const [modalOpen, setModalOpen] = useState(true);
   const [isOpen, setIsOpen] = useState(true);
