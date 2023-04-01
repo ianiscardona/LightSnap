@@ -11,14 +11,8 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { isMobile } from "react-device-detect";
 import { parseCookies } from "nookies";
 import Timer from "./Timer";
-import { parseCookies } from "nookies";
 
 export const AppDashboard = () => {
-  const { isAuthenticated } = parseCookies();
-  if (isAuthenticated !== "true") {
-    window.location.href = "/eventcode";
-    return null;
-  }
   const [imageMode, setImageMode] = useState(1);
   const [showcaseMode, setShowcaseMode] = useState(1);
   const [activeId, setActiveId] = useState(1);
