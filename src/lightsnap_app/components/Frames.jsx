@@ -6,8 +6,6 @@ export const Frames = (props) => {
   //   props.setLongPress(!props.longPress);
   // };
 
-  console.log(props.longPress);
-
   return (
     <div>
       <button
@@ -23,7 +21,7 @@ export const Frames = (props) => {
           props.setLongPress(false); //Hide FramePreview
         }}
         // onTouchMove={() => console.log("Touch Mover")}
-        className={`customIconMargin w-[70px] h-[70px] relative overflow-hidden snap-start border-2 ${toggleClassCheck(
+        className={`customIconMargin w-[70px] h-[70px] relative overflow-hidden snap-center border-2 ${toggleClassCheck(
           props.isActive
         )} sm:w-[77px] sm:h-[77px] transition-all duration-300`}
       >

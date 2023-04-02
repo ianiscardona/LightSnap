@@ -18,7 +18,7 @@ const ProcessImages = ({
       images = capturedImages.map((image, index) => ({
         src: image,
         x: 68,
-        y: index === 0 ? 1485 : 60,
+        y: index === 0 ? 60 : 1485,
       }));
     } else if (showcaseMode === 3) {
       images = capturedImages.map((image, index) => ({
@@ -47,17 +47,19 @@ const ProcessImages = ({
       .catch((err) => setErr(err.toString()));
   }, [capturedImages, selectedFrame, showcaseMode]);
 
+  console.log(src);
+
   return (
     <>
-      <div className="object-cover border border-black w-fit h-fit">
+      {/* <div className="object-cover border border-black w-fit h-fit">
         <img
           src={src}
           alt="Merged Images"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
 
         {err && <p>{err}</p>}
-      </div>
+      </div> */}
     </>
   );
 };

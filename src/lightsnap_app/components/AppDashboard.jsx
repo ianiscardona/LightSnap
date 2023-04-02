@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { FramePreview } from "./FramePreview";
 import { AfterCamModal } from "./AfterCamModal";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { isMobile } from "react-device-detect";
+import Timer from "./Timer";
 
 export const AppDashboard = () => {
   const [imageMode, setImageMode] = useState(1);
@@ -15,9 +17,10 @@ export const AppDashboard = () => {
   const [activeId, setActiveId] = useState(1);
   const [capturedImages, setCapturedImages] = useState([]);
   const [videoConstraints, setVideoConstraints] = useState({
-    width: 328,
-    height: 446,
+    width: isMobile ? 446 : 328,
+    height: isMobile ? 328 : 446,
     facingMode: "user",
+    aspectRatio: 4 / 3,
   });
   const webcamRef = useRef(null);
   const intervalRef = useRef(null);
@@ -26,31 +29,56 @@ export const AppDashboard = () => {
   const [output, setOutput] = useState(null);
   const [cue, setCue] = useState(0);
   const [shutterClick, setShutterClick] = useState(false);
-
+  const [isMirrored, setIsMirrored] = useState(true);
+  const [countdown, setCountdown] = useState(3);
   useEffect(() => {
     // const audio = new Audio("../shutter-click.wav");
     console.log("Captured");
   }, [cue]);
 
-  const handleModeChange = (imageMode, showcaseMode, width, height) => {
+  const handleModeChange = (
+    imageMode,
+    showcaseMode,
+    width,
+    height,
+    aspectRatio
+  ) => {
     setImageMode(imageMode);
     setShowcaseMode(showcaseMode);
-    setVideoConstraints({ ...videoConstraints, width, height });
+    setVideoConstraints({
+      ...videoConstraints,
+      width,
+      height,
+      aspectRatio,
+    });
   };
   const handleSolo = () => {
-    handleModeChange(1, 1, 328, 446);
+    if (isMobile) {
+      handleModeChange(1, 1, 446, 328, 4 / 3);
+    } else {
+      handleModeChange(1, 1, 328, 446, 4 / 3);
+    }
   };
   const handleDuo = () => {
-    handleModeChange(2, 2, 328, 328);
+    handleModeChange(2, 2, 328, 328, 1 / 1);
   };
   const handleTrio = () => {
-    handleModeChange(3, 3, 328, 185);
+    if (isMobile) {
+      handleModeChange(3, 3, 185, 328, 9 / 16);
+    } else {
+      handleModeChange(3, 3, 328, 185, 9 / 16);
+    }
   };
 
   const switchCamera = () => {
     const newFacingMode =
       videoConstraints.facingMode === "user" ? "environment" : "user";
-    setVideoConstraints({ ...videoConstraints, facingMode: newFacingMode });
+    const newMirror = newFacingMode === "user" ? true : false;
+    setVideoConstraints({
+      ...videoConstraints,
+      facingMode: newFacingMode,
+    });
+    setIsMirrored(newMirror);
   };
 
   const startCapture = () => {
@@ -67,6 +95,9 @@ export const AppDashboard = () => {
     }
     intervalRef.current = setInterval(() => {
       setCapturedImages((prevImages) => {
+        if (prevImages.length === showcaseMode - 1) {
+          setCountdown(null);
+        }
         if (prevImages.length < showcaseMode) {
           return [
             ...prevImages,
@@ -76,11 +107,12 @@ export const AppDashboard = () => {
           clearInterval(intervalRef.current);
           setIsCaptureFinished(true);
           setCue(0);
+          setCountdown(null);
           return prevImages;
         }
       });
       setCue((prevCue) => prevCue + 1);
-    }, 2000);
+    }, 3000);
     setShutterClick(true);
   };
 
@@ -118,8 +150,6 @@ export const AppDashboard = () => {
   const selectedFrame = framesInfo().find(
     (frame) => frame.id === activeId
   )?.frame;
-  console.log(output);
-
   const slideLeft = () => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 77;
@@ -135,7 +165,7 @@ export const AppDashboard = () => {
         <div className="relative flex flex-col items-center justify-center h-screen">
           <div className="flex overflow-hidden w-[328px] h-[437px] items-center justify-center">
             <div
-              className={`relative object-cover border border-black ${
+              className={`relative flex items-center justify-center object-cover border border-black ${
                 showcaseMode == 1
                   ? "w-[328px] h-[437px]"
                   : showcaseMode == 2
@@ -146,10 +176,12 @@ export const AppDashboard = () => {
               } transition-all custom-camera`}
             >
               <Webcam
+                mirrored={isMirrored}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
+                screenshotQuality={1}
               />
               <div
                 className={`absolute top-0 right-0 bg-[#1C0EB7] text-white rounded-full items-center justify-center h-8 w-8 m-2 ${
@@ -158,6 +190,16 @@ export const AppDashboard = () => {
               >
                 {cue}
               </div>
+              <div className="absolute  flex items-center justify-center z-50 text-white font-bold text-9xl opacity-40">
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div>
+              {/* <div
+                className={`absolute ${
+                  shutterClick ? null : "hidden"
+                } flex items-center justify-center z-50 text-white font-bold text-9xl opacity-20`}
+              >
+                {shutterClick ? <Timer seconds={countdown} /> : null}
+              </div> */}
               {/* <audio src="../shutter-click.wav" className={`${cue ? "block":"hidden"}`} autoPlay/> */}
             </div>
           </div>
@@ -194,9 +236,9 @@ export const AppDashboard = () => {
             </button>
             <div
               id="slider"
-              className="sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 transition-all scroll-smooth"
+              className="sm:justify-center w-full flex min-h-[70px] overflow-y-hidden flex-nowrap overflow-x-auto snap-x mb-3 transition-all scroll-smooth ease-in-out"
             >
-              <div className="flex min-h-fit">
+              <div className="mx-2 snap-x snap-mandatory flex min-h-fit smlr:max-ipse:space-x-8 ipse:max-ip14:space-x-14 ip14:max-meds:space-x-20 transition-all scroll-smooth ease-in-out">
                 {framesInfo().map((frame) => frame.frames)}
               </div>
             </div>

@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { saveAs } from "file-saver";
+import {
+  Document,
+  Image,
+  Page,
+  PDFDownloadLink,
+  StyleSheet,
+} from "@react-pdf/renderer";
 
 export const AfterCamModal = ({ isShow, output }) => {
   if (!isShow) return null;
@@ -8,8 +16,53 @@ export const AfterCamModal = ({ isShow, output }) => {
   const [isOpen, setIsOpen] = useState(true);
   const press = () => {
     setIsOpen(!isOpen);
+    console.log("Before reload:", window.location.href);
     window.location.reload(true);
+    console.log("After reload:", window.location.href);
   };
+
+  console.log(output);
+
+  const shareBtn = async () => {
+    const blob = await (await fetch(output)).blob();
+    const file = new File([blob], "LightSnap.png", { type: blob.type });
+
+    // const imageExt = output.split(";")[0].split("/")[1];
+    // const image = new File([output], `${Date.now()}.${imageExt}`, {type:`image/${imageExt}`} )
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "LightSnap",
+          text: "Check out this image!",
+          files: [file],
+        })
+        .then(() => {
+          console.log("Success");
+        });
+    } else {
+      alert(
+        "Your browser does not support share functionality. Save the image instead."
+      );
+    }
+    console.log(image);
+  };
+
+  // const printBtn = () => {
+  //     window.print()
+  // }
+
+  const downloadImg = () => {
+    saveAs(output, "LightSnap");
+  };
+
+  const PDFFile = () => (
+    <Document>
+      <Page>
+        <Image src={output} />
+      </Page>
+    </Document>
+  );
 
   return (
     <div
@@ -46,7 +99,7 @@ export const AfterCamModal = ({ isShow, output }) => {
           </div>
         </div>
       ) : (
-        <div className="relative lg:scale-[80%] py-5 flex flex-col items-center justify-center bg-white font-[Inter] rounded-2xl">
+        <div className="relative translate-y-[10%] lg:scale-[80%] py-5 flex flex-col items-center justify-center bg-white font-[Inter] rounded-2xl">
           <div className="absolute overflow-hidden -translate-y-[100%] sm:-translate-y-[105%] h-[200px] sm:h-[250px] bg-black flex items-center">
             {" "}
             <img className="object-cover h-[100%]" src={output} />
@@ -55,13 +108,21 @@ export const AfterCamModal = ({ isShow, output }) => {
             Nice!
           </h1>
           <div className="flex flex-col pb-6 sm:pb-5 gap-y-3 sm:gap-y-5">
-            <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#1AE92F] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+            <button
+              onClick={shareBtn}
+              className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#1AE92F] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"
+            >
               <h2 className="font-bold text-base sm:text-xl">Share</h2>
             </button>
-            <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
-              <h2 className="font-normal text-base sm:text-xl">Print</h2>
-            </button>
-            <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+            <PDFDownloadLink document={<PDFFile />} fileName="LightSnapp">
+              <button className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300">
+                <h2 className="font-normal text-base sm:text-xl">Print</h2>
+              </button>
+            </PDFDownloadLink>
+            <button
+              onClick={downloadImg}
+              className=" rounded-full w-28 h-10 sm:w-52 sm:h-14 text-black bg-[#D9D9D9] border-[#000000] border-2 hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"
+            >
               <h2 className="font-normal text-base sm:text-xl">Save</h2>
             </button>
           </div>
