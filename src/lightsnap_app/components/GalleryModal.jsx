@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CgCloseO } from "react-icons/cg";
 import { saveAs } from "file-saver";
-export const GalleryModal = ({ open, onClose }) => {
+export const GalleryModal = ({ open, onClose, image }) => {
   if (!open) return null;
 
   const [imgOpen, setimgOpen] = useState(true);
@@ -10,7 +10,7 @@ export const GalleryModal = ({ open, onClose }) => {
     setimgOpen(!imgOpen);
     // const blob = await (await fetch(image)).blob();
     // const file= new File([blob],"LightSnap.png",{type: blob.type});
-    saveAs(image, "LightSnap.png");
+    saveAs(image, "LightSnap");
     // console.log(file);
   };
   return (

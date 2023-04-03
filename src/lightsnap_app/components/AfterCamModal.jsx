@@ -58,7 +58,7 @@ export const AfterCamModal = ({ isShow, output }) => {
         "Your browser does not support share functionality. Save the image instead."
       );
     }
-    console.log(image);
+    // console.log(image);
   };
 
   // const printBtn = () => {
