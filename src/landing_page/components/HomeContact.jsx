@@ -13,7 +13,7 @@ export const HomeContact = () => {
         name,
         email,
       })
-      .then((res) => console.log("Posting data", res))
+      .then(() => alert("Successfully Submitted!"))
       .catch((err) => console.log(err));
 
     axios
