@@ -1,24 +1,29 @@
 import axios from "axios";
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 export const HomeContact = () => {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post("http://127.0.0.1:8000/api/users", {
-      name,
-      email
-    }).then((res) => console.log("Posting data", res)).catch((err) => console.log(err))
-    
-    axios.post("http://127.0.0.1:8000/api/message", {
-      message
-    }).then((res) => console.log("Posting data", res)).catch((err) => console.log(err))
-  }
- 
+    axios
+      .post(`${import.meta.env.VITE_API_BASE_URL}/users`, {
+        name,
+        email,
+      })
+      .then((res) => console.log("Posting data", res))
+      .catch((err) => console.log(err));
+
+    axios
+      .post(`${import.meta.env.VITE_API_BASE_URL}/message`, {
+        message,
+      })
+      .then((res) => console.log("Posting data", res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div id="inquire" className="relative lg:pb-40 bg-[#232325]">
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 lg:mx-28 pt-20 lg:pt-40">
