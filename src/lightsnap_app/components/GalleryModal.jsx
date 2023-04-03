@@ -25,7 +25,7 @@ export const GalleryModal = ({ open, onClose, image }) => {
                 onClick={() => download()}
                 className="m-auto rounded-full w-32 h-10 sm:w-52 sm:h-16 text-white border-white border-2 bg-[#1C0EB7] hover:bg-[#D7282F] focus:bg-[#D7282F] transition-colors duration-300"
               >
-                <h2 className="font-bold text-base sm:text-xl">DOWNLOAD</h2>
+                <h2 className="font-bold text-base sm:text-xl">OPEN</h2>
               </button>
             </div>
           </div>
@@ -34,10 +34,10 @@ export const GalleryModal = ({ open, onClose, image }) => {
             <div className="relative w-full h-full">
               <img className="" src="../images/mockup.png" />
               <div className=" flex flex-col backdrop-blur absolute top-0 w-full h-full bg-opacity-25">
-                <h1 className="font-bold text-2xl sm:text-4xl text-white w-full h-full flex justify-center items-center">
-                  Download
+                <h1 className="text-center font-bold text-2xl sm:text-4xl text-white w-full h-full flex justify-center items-center">
+                  Opened
                   <br />
-                  Succesful
+                  in New Tab
                 </h1>
                 <button
                   onClick={() => onClose()}
