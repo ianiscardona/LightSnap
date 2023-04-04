@@ -11,7 +11,7 @@ export const GalleryModal = ({ open, onClose, image }) => {
     saveAs(image, "LightSnap");
   };
   return (
-    <div className="fixed inset-0 bg-opacity-30 backdrop-blur flex justify-center items-center w-full">
+    <div className="z-50 fixed inset-0 bg-opacity-30 backdrop-blur flex justify-center items-center w-full">
       <div onClick={() => onClose()} className="absolute w-full h-full"></div>
       <div className=" relative flex flex-col justify-center items-center font-[Inter]">
         {imgOpen ? (
