@@ -6,22 +6,34 @@ import { Link } from "react-router-dom";
 //import {Link, useNavigate} from "react-router-dom"
 //import { AuthContext } from '../../context/AuthContext'
 
-/*export const EventCode = () => {
-  const navigate = useNavigate()
-  const { setIsLoggedIn } = useContext(AuthContext)
-  const [code, isCode] = useState("")
+//hardcoded fake code
+// const logIn = () => {
+//   const fakeCode = "bday"; //fake code
+//   if (code === fakeCode) {
+//     setIsLoggedIn(true);
+//     navigate("/getstarted");
+//   } else {
+//     setIsLoggedIn(false);
+//     navigate("/eventcodeerror");
+//   }
+// };
 
+//fetch code from API
+// const navigate = useNavigate();
+// const { setIsLoggedIn } = useContext(AuthContext);
+// const [code, isCode] = useState("");
 
-  const logIn = async() => {
+// const logIn = async () => {
+//   const res = await axios.post("/login", { code });
 
-    const res = await axios.post("/login", {code})
-    
-    if (!res.status === 200 ) {setIsLoggedIn(false) 
-    navigate("/eventcodeerror") } 
-      else {
-        setIsLoggedIn(true)
-        navigate("/getstarted")
-      } */
+//   if (!res.status === 200) {
+//     setIsLoggedIn(false);
+//     navigate("/eventcodeerror");
+//   } else {
+//     setIsLoggedIn(true);
+//     navigate("/getstarted");
+//   }
+// };
 
 export const EventCode = () => {
   const [code, isCode] = useState("");

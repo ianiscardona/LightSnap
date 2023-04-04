@@ -43,7 +43,6 @@ export const EventGallery = () => {
       </button>
     );
   });
-  // console.log (currentModal);
   const outputImagesPreview = images.map((item, index) => {
     return (
       <GalleryModal

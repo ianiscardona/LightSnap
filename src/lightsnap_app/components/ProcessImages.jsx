@@ -11,7 +11,6 @@ const ProcessImages = ({
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    console.log(selectedFrame);
     let images = [];
 
     if (showcaseMode === 2) {
@@ -47,20 +46,6 @@ const ProcessImages = ({
       .catch((err) => setErr(err.toString()));
   }, [capturedImages, selectedFrame, showcaseMode]);
 
-  console.log(src);
-
-  return (
-    <>
-      {/* <div className="object-cover border border-black w-fit h-fit">
-        <img
-          src={src}
-          alt="Merged Images"
-          className="w-full h-full object-contain"
-        />
-
-        {err && <p>{err}</p>}
-      </div> */}
-    </>
-  );
+  return <></>;
 };
 export default ProcessImages;

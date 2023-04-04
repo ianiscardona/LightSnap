@@ -17,9 +17,7 @@ export const AfterCamModal = ({ isShow, output }) => {
   const [isOpen, setIsOpen] = useState(true);
   const press = () => {
     setIsOpen(!isOpen);
-    console.log("Before reload:", window.location.href);
     window.location.reload(true);
-    console.log("After reload:", window.location.href);
   };
 
   const acceptButton = async () => {
@@ -34,14 +32,10 @@ export const AfterCamModal = ({ isShow, output }) => {
       .then((res) => console.log("Posting data", res))
       .catch((err) => console.log(err));
   };
-  console.log(output);
 
   const shareBtn = async () => {
     const blob = await (await fetch(output)).blob();
     const file = new File([blob], "LightSnap.png", { type: blob.type });
-
-    // const imageExt = output.split(";")[0].split("/")[1];
-    // const image = new File([output], `${Date.now()}.${imageExt}`, {type:`image/${imageExt}`} )
 
     if (navigator.share) {
       navigator
@@ -58,15 +52,10 @@ export const AfterCamModal = ({ isShow, output }) => {
         "Your browser does not support share functionality. Save the image instead."
       );
     }
-    // console.log(image);
   };
 
-  // const printBtn = () => {
-  //     window.print()
-  // }
-
   const downloadImg = () => {
-    saveAs(output, "LightSnap");
+    saveAs(output, "LightSnap.jpg");
   };
 
   const PDFFile = () => (
