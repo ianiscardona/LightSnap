@@ -19,7 +19,7 @@ export const GalleryModal = ({ open, onClose, image }) => {
       <div className=" relative flex flex-col justify-center items-center font-[Inter]">
         {imgOpen ? (
           <div className="relative customWalkthrough w-80 sm:w-[400px]">
-            <img className="relative pb-5" src="../images/mockup.png" />
+            <img className="relative pb-5" src={image} />
             <div className="w-full flex content-center">
               <button
                 onClick={() => download()}
@@ -32,7 +32,7 @@ export const GalleryModal = ({ open, onClose, image }) => {
         ) : (
           <div className="flex flex-col gap-5 relative customWalkthrough w-80 sm:w-[400px]">
             <div className="relative w-full h-full">
-              <img className="" src="../images/mockup.png" />
+              <img className="" src={image} />
               <div className=" flex flex-col backdrop-blur absolute top-0 w-full h-full bg-opacity-25">
                 <h1 className="text-center font-bold text-2xl sm:text-4xl text-white w-full h-full flex justify-center items-center">
                   Opened
