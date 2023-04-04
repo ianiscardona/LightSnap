@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { saveAs } from "file-saver";
@@ -16,7 +17,22 @@ export const AfterCamModal = ({ isShow, output }) => {
   const [isOpen, setIsOpen] = useState(true);
   const press = () => {
     setIsOpen(!isOpen);
+    console.log("Before reload:", window.location.href);
     window.location.reload(true);
+    console.log("After reload:", window.location.href);
+  };
+
+  const acceptButton = async () => {
+    setModalOpen(!modalOpen);
+    const blob = await (await fetch(output)).blob();
+    const file = new File([blob], "LightSnap.png", { type: blob.type });
+    let test = new FormData();
+    test.append("image_path", file);
+    test.append("event_id", 1);
+    axios
+      .post(`${import.meta.env.VITE_API_BASE_URL}/uploadevent_images`, test)
+      .then((res) => console.log("Posting data", res))
+      .catch((err) => console.log(err));
   };
   console.log(output);
 
@@ -77,7 +93,7 @@ export const AfterCamModal = ({ isShow, output }) => {
               />
             </button>
             <button
-              onClick={() => setModalOpen(!modalOpen)}
+              onClick={acceptButton}
               className="flex items-center justify-center w-20 h-20 sm:w-28 sm:h-28 lg:w-40 lg:h-40 rounded-full bg-[#13D655]"
             >
               <img
