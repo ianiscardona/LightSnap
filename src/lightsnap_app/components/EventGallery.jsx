@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavbarEvent } from "../../pages/navbar-event";
-import { Placeholder } from "./Placeholder";
 import { GalleryModal } from "./GalleryModal";
 import axios from "axios";
 
