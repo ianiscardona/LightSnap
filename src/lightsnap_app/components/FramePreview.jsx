@@ -2,7 +2,11 @@ import React from "react";
 
 export const FramePreview = (props) => {
   return (
-    <div className={`fixed top-0 z-50 bg-[#5E5A5A]/30 backdrop-blur-md h-screen w-screen flex items-center justify-center ${props.isPreview ? null:"hidden"}`}>
+    <div
+      className={`fixed top-0 z-50 bg-[#5E5A5A]/30 backdrop-blur-md h-screen w-screen flex items-center justify-center ${
+        props.isPreview ? null : "hidden"
+      }`}
+    >
       <img
         onContextMenu={(e) => e.preventDefault()}
         src={`../images/frames/${props.frame}`}

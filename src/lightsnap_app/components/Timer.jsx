@@ -13,7 +13,6 @@ export default function Timer({ seconds }) {
 
   useEffect(() => {
     if (countdown <= 0 || countdown === null) {
-      // clearInterval(timerId.current);
       setCountdown(seconds);
     }
   }, [countdown]);

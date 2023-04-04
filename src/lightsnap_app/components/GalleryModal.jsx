@@ -8,10 +8,7 @@ export const GalleryModal = ({ open, onClose, image }) => {
 
   const download = () => {
     setimgOpen(!imgOpen);
-    // const blob = await (await fetch(image)).blob();
-    // const file= new File([blob],"LightSnap.png",{type: blob.type});
     saveAs(image, "LightSnap");
-    // console.log(file);
   };
   return (
     <div className="fixed inset-0 bg-opacity-30 backdrop-blur flex justify-center items-center w-full">

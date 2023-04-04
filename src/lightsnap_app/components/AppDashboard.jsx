@@ -31,10 +31,6 @@ export const AppDashboard = () => {
   const [shutterClick, setShutterClick] = useState(false);
   const [isMirrored, setIsMirrored] = useState(true);
   const [countdown, setCountdown] = useState(3);
-  useEffect(() => {
-    // const audio = new Audio("../shutter-click.wav");
-    console.log("Captured");
-  }, [cue]);
 
   const handleModeChange = (
     imageMode,
